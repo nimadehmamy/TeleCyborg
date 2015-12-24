@@ -5,7 +5,7 @@ var fs = require('fs');
 var serialport = require("serialport");
 var SerialPort = serialport.SerialPort;
 var serialPort = new SerialPort("/dev/ttyACM0", {
-  baudrate: 9600,
+  baudrate: 57600, //9600,
   parser: serialport.parsers.readline("\n")
 
 });
@@ -15,17 +15,19 @@ var write = function(err, results) {
       console.log('Writing ' + results + ' chars');
   }
 
-
+//string.indexOf(substring) > -1 // to check if substring present
 serialPort.on("open", function () {
   console.log('open');
   serialPort.on('data', function(data) {
-      console.log(data);
+      console.log('log: ', data);
+      
       var l = data.split(', ');
+      //socket.emit('news', l);
       var ch = [];
       for (i in l){
         ch+=String.fromCharCode(l[i]);
       }
-      console.log(ch);
+      //console.log(ch);
   });
   
   
@@ -50,13 +52,15 @@ function handler (req, res) {
 }
 
 io.on('connection', function (socket) {
-  console.log('1 here?');
   socket.emit('news', { hello: 'world' });
   socket.on('my other event', function (data) {
     console.log(data);
   });
   socket.on('to arduino', function (data) {
-    console.log('hehe:',data);
+    //console.log('hehe:',data);
     serialPort.write(data,write );
   });
 });
+
+
+//var my = require('./my.js');

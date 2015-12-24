@@ -1,0 +1,888 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/nodejs', '/usr/bin/npm', 'install' ]
+2 info using npm@1.3.10
+3 info using node@v0.10.25
+4 verbose readDependencies using package.json deps
+5 verbose install where, deps [ '/home/nimadt/Downloads',
+5 verbose install   [ 'adm-zip',
+5 verbose install     'airplay-js',
+5 verbose install     'async',
+5 verbose install     'chromecast-js',
+5 verbose install     'gitlab',
+5 verbose install     'i18n',
+5 verbose install     'iconv-lite',
+5 verbose install     'jschardet',
+5 verbose install     'json-rpc2',
+5 verbose install     'kat-api',
+5 verbose install     'memoizee',
+5 verbose install     'mkdirp',
+5 verbose install     'moment',
+5 verbose install     'mv',
+5 verbose install     'nedb',
+5 verbose install     'node-captions',
+5 verbose install     'nodecast-js',
+5 verbose install     'node-tvdb',
+5 verbose install     'node-webkit-fdialogs',
+5 verbose install     'os-name',
+5 verbose install     'peerflix',
+5 verbose install     'opensubtitles-api',
+5 verbose install     'q',
+5 verbose install     'read-torrent',
+5 verbose install     'readdirp',
+5 verbose install     'request',
+5 verbose install     'rimraf',
+5 verbose install     'semver',
+5 verbose install     'send',
+5 verbose install     'strike-api',
+5 verbose install     'tar',
+5 verbose install     'temp',
+5 verbose install     'torrent-tracker-health',
+5 verbose install     'underscore',
+5 verbose install     'upnp-mediarenderer-client',
+5 verbose install     'URIjs',
+5 verbose install     'xmlbuilder',
+5 verbose install     'bower',
+5 verbose install     'grunt',
+5 verbose install     'grunt-bower-clean',
+5 verbose install     'grunt-contrib-clean',
+5 verbose install     'grunt-contrib-compress',
+5 verbose install     'grunt-contrib-jshint',
+5 verbose install     'grunt-contrib-stylus',
+5 verbose install     'grunt-contrib-watch',
+5 verbose install     'grunt-exec',
+5 verbose install     'grunt-githooks',
+5 verbose install     'grunt-jsbeautifier',
+5 verbose install     'grunt-node-webkit-builder',
+5 verbose install     'grunt-shell',
+5 verbose install     'load-grunt-tasks',
+5 verbose install     'nw-gyp',
+5 verbose install     'stylus' ] ]
+6 info preinstall Popcorn-Time@0.3.8-2
+7 warn package.json http@0.0.0 No repository field.
+8 warn package.json socketio@1.0.0 No repository field.
+9 verbose readDependencies using package.json deps
+10 verbose already installed skipping async@0.9.0 /home/nimadt/Downloads
+11 verbose cache add [ 'chromecast-js@git+https://git.popcorntime.io/mirrors/chromecast-js.git',
+11 verbose cache add   null ]
+12 verbose cache add name=undefined spec="chromecast-js@git+https://git.popcorntime.io/mirrors/chromecast-js.git" args=["chromecast-js@git+https://git.popcorntime.io/mirrors/chromecast-js.git",null]
+13 verbose parsed url { protocol: null,
+13 verbose parsed url   slashes: null,
+13 verbose parsed url   auth: null,
+13 verbose parsed url   host: null,
+13 verbose parsed url   port: null,
+13 verbose parsed url   hostname: null,
+13 verbose parsed url   hash: null,
+13 verbose parsed url   search: null,
+13 verbose parsed url   query: null,
+13 verbose parsed url   pathname: 'chromecast-js@git+https://git.popcorntime.io/mirrors/chromecast-js.git',
+13 verbose parsed url   path: 'chromecast-js@git+https://git.popcorntime.io/mirrors/chromecast-js.git',
+13 verbose parsed url   href: 'chromecast-js@git+https://git.popcorntime.io/mirrors/chromecast-js.git' }
+14 verbose cache add name="chromecast-js" spec="git+https://git.popcorntime.io/mirrors/chromecast-js.git" args=["chromecast-js","git+https://git.popcorntime.io/mirrors/chromecast-js.git"]
+15 verbose parsed url { protocol: 'git+https:',
+15 verbose parsed url   slashes: true,
+15 verbose parsed url   auth: null,
+15 verbose parsed url   host: 'git.popcorntime.io',
+15 verbose parsed url   port: null,
+15 verbose parsed url   hostname: 'git.popcorntime.io',
+15 verbose parsed url   hash: null,
+15 verbose parsed url   search: null,
+15 verbose parsed url   query: null,
+15 verbose parsed url   pathname: '/mirrors/chromecast-js.git',
+15 verbose parsed url   path: '/mirrors/chromecast-js.git',
+15 verbose parsed url   href: 'git+https://git.popcorntime.io/mirrors/chromecast-js.git' }
+16 verbose already installed skipping gitlab@1.3.0 /home/nimadt/Downloads
+17 verbose already installed skipping i18n@0.5.0 /home/nimadt/Downloads
+18 verbose already installed skipping iconv-lite@^0.4.7 /home/nimadt/Downloads
+19 silly lockFile a4757beb-ime-io-mirrors-chromecast-js-git git+https://git.popcorntime.io/mirrors/chromecast-js.git
+20 verbose lock git+https://git.popcorntime.io/mirrors/chromecast-js.git /home/nimadt/.npm/a4757beb-ime-io-mirrors-chromecast-js-git.lock
+21 verbose already installed skipping jschardet@1.1.1 /home/nimadt/Downloads
+22 verbose addRemoteGit [ 'https://git.popcorntime.io/mirrors/chromecast-js.git',
+22 verbose addRemoteGit   'master' ]
+23 verbose already installed skipping kat-api@^0.0.3 /home/nimadt/Downloads
+24 verbose already installed skipping json-rpc2@^0.8.1 /home/nimadt/Downloads
+25 verbose already installed skipping memoizee@^0.3.8 /home/nimadt/Downloads
+26 verbose already installed skipping mkdirp@* /home/nimadt/Downloads
+27 verbose already installed skipping moment@^2.10.2 /home/nimadt/Downloads
+28 verbose already installed skipping mv@^2.0.3 /home/nimadt/Downloads
+29 verbose already installed skipping nedb@1.1.2 /home/nimadt/Downloads
+30 verbose already installed skipping node-captions@0.3.8 /home/nimadt/Downloads
+31 verbose already installed skipping node-tvdb@1.3.1 /home/nimadt/Downloads
+32 verbose cache add [ 'nodecast-js@git+https://git.popcorntime.io/mirrors/nodecast-js.git',
+32 verbose cache add   null ]
+33 verbose cache add name=undefined spec="nodecast-js@git+https://git.popcorntime.io/mirrors/nodecast-js.git" args=["nodecast-js@git+https://git.popcorntime.io/mirrors/nodecast-js.git",null]
+34 verbose parsed url { protocol: null,
+34 verbose parsed url   slashes: null,
+34 verbose parsed url   auth: null,
+34 verbose parsed url   host: null,
+34 verbose parsed url   port: null,
+34 verbose parsed url   hostname: null,
+34 verbose parsed url   hash: null,
+34 verbose parsed url   search: null,
+34 verbose parsed url   query: null,
+34 verbose parsed url   pathname: 'nodecast-js@git+https://git.popcorntime.io/mirrors/nodecast-js.git',
+34 verbose parsed url   path: 'nodecast-js@git+https://git.popcorntime.io/mirrors/nodecast-js.git',
+34 verbose parsed url   href: 'nodecast-js@git+https://git.popcorntime.io/mirrors/nodecast-js.git' }
+35 verbose cache add name="nodecast-js" spec="git+https://git.popcorntime.io/mirrors/nodecast-js.git" args=["nodecast-js","git+https://git.popcorntime.io/mirrors/nodecast-js.git"]
+36 verbose parsed url { protocol: 'git+https:',
+36 verbose parsed url   slashes: true,
+36 verbose parsed url   auth: null,
+36 verbose parsed url   host: 'git.popcorntime.io',
+36 verbose parsed url   port: null,
+36 verbose parsed url   hostname: 'git.popcorntime.io',
+36 verbose parsed url   hash: null,
+36 verbose parsed url   search: null,
+36 verbose parsed url   query: null,
+36 verbose parsed url   pathname: '/mirrors/nodecast-js.git',
+36 verbose parsed url   path: '/mirrors/nodecast-js.git',
+36 verbose parsed url   href: 'git+https://git.popcorntime.io/mirrors/nodecast-js.git' }
+37 silly lockFile 102c612c-ntime-io-mirrors-nodecast-js-git git+https://git.popcorntime.io/mirrors/nodecast-js.git
+38 verbose lock git+https://git.popcorntime.io/mirrors/nodecast-js.git /home/nimadt/.npm/102c612c-ntime-io-mirrors-nodecast-js-git.lock
+39 verbose cache add [ 'node-webkit-fdialogs@latest', null ]
+40 verbose cache add name=undefined spec="node-webkit-fdialogs@latest" args=["node-webkit-fdialogs@latest",null]
+41 verbose parsed url { protocol: null,
+41 verbose parsed url   slashes: null,
+41 verbose parsed url   auth: null,
+41 verbose parsed url   host: null,
+41 verbose parsed url   port: null,
+41 verbose parsed url   hostname: null,
+41 verbose parsed url   hash: null,
+41 verbose parsed url   search: null,
+41 verbose parsed url   query: null,
+41 verbose parsed url   pathname: 'node-webkit-fdialogs@latest',
+41 verbose parsed url   path: 'node-webkit-fdialogs@latest',
+41 verbose parsed url   href: 'node-webkit-fdialogs@latest' }
+42 verbose cache add name="node-webkit-fdialogs" spec="latest" args=["node-webkit-fdialogs","latest"]
+43 verbose parsed url { protocol: null,
+43 verbose parsed url   slashes: null,
+43 verbose parsed url   auth: null,
+43 verbose parsed url   host: null,
+43 verbose parsed url   port: null,
+43 verbose parsed url   hostname: null,
+43 verbose parsed url   hash: null,
+43 verbose parsed url   search: null,
+43 verbose parsed url   query: null,
+43 verbose parsed url   pathname: 'latest',
+43 verbose parsed url   path: 'latest',
+43 verbose parsed url   href: 'latest' }
+44 verbose addNamed [ 'node-webkit-fdialogs', 'latest' ]
+45 verbose addNamed [ null, null ]
+46 silly lockFile c57da07d-node-webkit-fdialogs-latest node-webkit-fdialogs@latest
+47 verbose lock node-webkit-fdialogs@latest /home/nimadt/.npm/c57da07d-node-webkit-fdialogs-latest.lock
+48 verbose already installed skipping os-name@^1.0.3 /home/nimadt/Downloads
+49 verbose cache add [ 'peerflix@git+https://git.popcorntime.io/mirrors/peerflix.git',
+49 verbose cache add   null ]
+50 verbose cache add name=undefined spec="peerflix@git+https://git.popcorntime.io/mirrors/peerflix.git" args=["peerflix@git+https://git.popcorntime.io/mirrors/peerflix.git",null]
+51 verbose parsed url { protocol: null,
+51 verbose parsed url   slashes: null,
+51 verbose parsed url   auth: null,
+51 verbose parsed url   host: null,
+51 verbose parsed url   port: null,
+51 verbose parsed url   hostname: null,
+51 verbose parsed url   hash: null,
+51 verbose parsed url   search: null,
+51 verbose parsed url   query: null,
+51 verbose parsed url   pathname: 'peerflix@git+https://git.popcorntime.io/mirrors/peerflix.git',
+51 verbose parsed url   path: 'peerflix@git+https://git.popcorntime.io/mirrors/peerflix.git',
+51 verbose parsed url   href: 'peerflix@git+https://git.popcorntime.io/mirrors/peerflix.git' }
+52 verbose cache add name="peerflix" spec="git+https://git.popcorntime.io/mirrors/peerflix.git" args=["peerflix","git+https://git.popcorntime.io/mirrors/peerflix.git"]
+53 verbose parsed url { protocol: 'git+https:',
+53 verbose parsed url   slashes: true,
+53 verbose parsed url   auth: null,
+53 verbose parsed url   host: 'git.popcorntime.io',
+53 verbose parsed url   port: null,
+53 verbose parsed url   hostname: 'git.popcorntime.io',
+53 verbose parsed url   hash: null,
+53 verbose parsed url   search: null,
+53 verbose parsed url   query: null,
+53 verbose parsed url   pathname: '/mirrors/peerflix.git',
+53 verbose parsed url   path: '/mirrors/peerflix.git',
+53 verbose parsed url   href: 'git+https://git.popcorntime.io/mirrors/peerflix.git' }
+54 silly lockFile ba2786e4-corntime-io-mirrors-peerflix-git git+https://git.popcorntime.io/mirrors/peerflix.git
+55 verbose lock git+https://git.popcorntime.io/mirrors/peerflix.git /home/nimadt/.npm/ba2786e4-corntime-io-mirrors-peerflix-git.lock
+56 verbose already installed skipping opensubtitles-api@^0.0.3 /home/nimadt/Downloads
+57 verbose addRemoteGit [ 'https://git.popcorntime.io/mirrors/nodecast-js.git',
+57 verbose addRemoteGit   'master' ]
+58 verbose already installed skipping q@2.0.3 /home/nimadt/Downloads
+59 info addNameTag [ 'node-webkit-fdialogs', 'latest' ]
+60 verbose already installed skipping read-torrent@1.3.0 /home/nimadt/Downloads
+61 verbose addRemoteGit [ 'https://git.popcorntime.io/mirrors/peerflix.git', 'master' ]
+62 verbose url raw node-webkit-fdialogs
+63 verbose url resolving [ 'https://registry.npmjs.org/', './node-webkit-fdialogs' ]
+64 verbose url resolved https://registry.npmjs.org/node-webkit-fdialogs
+65 info trying registry request attempt 1 at 14:21:28
+66 http GET https://registry.npmjs.org/node-webkit-fdialogs
+67 verbose already installed skipping readdirp@* /home/nimadt/Downloads
+68 verbose already installed skipping request@^2.55.0 /home/nimadt/Downloads
+69 verbose already installed skipping rimraf@2.2.8 /home/nimadt/Downloads
+70 verbose already installed skipping semver@^4.3.3 /home/nimadt/Downloads
+71 verbose already installed skipping send@0.12.2 /home/nimadt/Downloads
+72 verbose already installed skipping strike-api@0.2.0 /home/nimadt/Downloads
+73 verbose already installed skipping tar@^1.0.3 /home/nimadt/Downloads
+74 verbose already installed skipping temp@^0.8.1 /home/nimadt/Downloads
+75 verbose already installed skipping torrent-tracker-health@^0.1.4 /home/nimadt/Downloads
+76 verbose already installed skipping underscore@^1.8.3 /home/nimadt/Downloads
+77 verbose already installed skipping upnp-mediarenderer-client@^1.2.1 /home/nimadt/Downloads
+78 verbose already installed skipping URIjs@^1.15.0 /home/nimadt/Downloads
+79 verbose already installed skipping xmlbuilder@^2.6.2 /home/nimadt/Downloads
+80 verbose cache add [ 'grunt-bower-clean@^0.2.2', null ]
+81 verbose cache add name=undefined spec="grunt-bower-clean@^0.2.2" args=["grunt-bower-clean@^0.2.2",null]
+82 verbose parsed url { protocol: null,
+82 verbose parsed url   slashes: null,
+82 verbose parsed url   auth: null,
+82 verbose parsed url   host: null,
+82 verbose parsed url   port: null,
+82 verbose parsed url   hostname: null,
+82 verbose parsed url   hash: null,
+82 verbose parsed url   search: null,
+82 verbose parsed url   query: null,
+82 verbose parsed url   pathname: 'grunt-bower-clean@^0.2.2',
+82 verbose parsed url   path: 'grunt-bower-clean@^0.2.2',
+82 verbose parsed url   href: 'grunt-bower-clean@^0.2.2' }
+83 verbose cache add name="grunt-bower-clean" spec="^0.2.2" args=["grunt-bower-clean","^0.2.2"]
+84 verbose parsed url { protocol: null,
+84 verbose parsed url   slashes: null,
+84 verbose parsed url   auth: null,
+84 verbose parsed url   host: null,
+84 verbose parsed url   port: null,
+84 verbose parsed url   hostname: null,
+84 verbose parsed url   hash: null,
+84 verbose parsed url   search: null,
+84 verbose parsed url   query: null,
+84 verbose parsed url   pathname: '^0.2.2',
+84 verbose parsed url   path: '^0.2.2',
+84 verbose parsed url   href: '^0.2.2' }
+85 verbose addNamed [ 'grunt-bower-clean', '^0.2.2' ]
+86 verbose addNamed [ null, '>=0.2.2-0 <0.3.0-0' ]
+87 silly lockFile 7d2b9d1f-grunt-bower-clean-0-2-2 grunt-bower-clean@^0.2.2
+88 verbose lock grunt-bower-clean@^0.2.2 /home/nimadt/.npm/7d2b9d1f-grunt-bower-clean-0-2-2.lock
+89 verbose cache add [ 'bower@1.4.1', null ]
+90 verbose cache add name=undefined spec="bower@1.4.1" args=["bower@1.4.1",null]
+91 verbose parsed url { protocol: null,
+91 verbose parsed url   slashes: null,
+91 verbose parsed url   auth: null,
+91 verbose parsed url   host: null,
+91 verbose parsed url   port: null,
+91 verbose parsed url   hostname: null,
+91 verbose parsed url   hash: null,
+91 verbose parsed url   search: null,
+91 verbose parsed url   query: null,
+91 verbose parsed url   pathname: 'bower@1.4.1',
+91 verbose parsed url   path: 'bower@1.4.1',
+91 verbose parsed url   href: 'bower@1.4.1' }
+92 verbose cache add name="bower" spec="1.4.1" args=["bower","1.4.1"]
+93 verbose parsed url { protocol: null,
+93 verbose parsed url   slashes: null,
+93 verbose parsed url   auth: null,
+93 verbose parsed url   host: null,
+93 verbose parsed url   port: null,
+93 verbose parsed url   hostname: null,
+93 verbose parsed url   hash: null,
+93 verbose parsed url   search: null,
+93 verbose parsed url   query: null,
+93 verbose parsed url   pathname: '1.4.1',
+93 verbose parsed url   path: '1.4.1',
+93 verbose parsed url   href: '1.4.1' }
+94 verbose addNamed [ 'bower', '1.4.1' ]
+95 verbose addNamed [ '1.4.1', '1.4.1' ]
+96 silly lockFile 185f46c0-bower-1-4-1 bower@1.4.1
+97 verbose lock bower@1.4.1 /home/nimadt/.npm/185f46c0-bower-1-4-1.lock
+98 verbose cache add [ 'grunt-contrib-clean@^0.6.0', null ]
+99 verbose cache add name=undefined spec="grunt-contrib-clean@^0.6.0" args=["grunt-contrib-clean@^0.6.0",null]
+100 verbose parsed url { protocol: null,
+100 verbose parsed url   slashes: null,
+100 verbose parsed url   auth: null,
+100 verbose parsed url   host: null,
+100 verbose parsed url   port: null,
+100 verbose parsed url   hostname: null,
+100 verbose parsed url   hash: null,
+100 verbose parsed url   search: null,
+100 verbose parsed url   query: null,
+100 verbose parsed url   pathname: 'grunt-contrib-clean@^0.6.0',
+100 verbose parsed url   path: 'grunt-contrib-clean@^0.6.0',
+100 verbose parsed url   href: 'grunt-contrib-clean@^0.6.0' }
+101 verbose cache add name="grunt-contrib-clean" spec="^0.6.0" args=["grunt-contrib-clean","^0.6.0"]
+102 verbose parsed url { protocol: null,
+102 verbose parsed url   slashes: null,
+102 verbose parsed url   auth: null,
+102 verbose parsed url   host: null,
+102 verbose parsed url   port: null,
+102 verbose parsed url   hostname: null,
+102 verbose parsed url   hash: null,
+102 verbose parsed url   search: null,
+102 verbose parsed url   query: null,
+102 verbose parsed url   pathname: '^0.6.0',
+102 verbose parsed url   path: '^0.6.0',
+102 verbose parsed url   href: '^0.6.0' }
+103 verbose addNamed [ 'grunt-contrib-clean', '^0.6.0' ]
+104 verbose addNamed [ null, '>=0.6.0-0 <0.7.0-0' ]
+105 silly lockFile ca39a60f-grunt-contrib-clean-0-6-0 grunt-contrib-clean@^0.6.0
+106 verbose lock grunt-contrib-clean@^0.6.0 /home/nimadt/.npm/ca39a60f-grunt-contrib-clean-0-6-0.lock
+107 verbose cache add [ 'grunt@0.4.5', null ]
+108 verbose cache add name=undefined spec="grunt@0.4.5" args=["grunt@0.4.5",null]
+109 verbose parsed url { protocol: null,
+109 verbose parsed url   slashes: null,
+109 verbose parsed url   auth: null,
+109 verbose parsed url   host: null,
+109 verbose parsed url   port: null,
+109 verbose parsed url   hostname: null,
+109 verbose parsed url   hash: null,
+109 verbose parsed url   search: null,
+109 verbose parsed url   query: null,
+109 verbose parsed url   pathname: 'grunt@0.4.5',
+109 verbose parsed url   path: 'grunt@0.4.5',
+109 verbose parsed url   href: 'grunt@0.4.5' }
+110 verbose cache add name="grunt" spec="0.4.5" args=["grunt","0.4.5"]
+111 verbose parsed url { protocol: null,
+111 verbose parsed url   slashes: null,
+111 verbose parsed url   auth: null,
+111 verbose parsed url   host: null,
+111 verbose parsed url   port: null,
+111 verbose parsed url   hostname: null,
+111 verbose parsed url   hash: null,
+111 verbose parsed url   search: null,
+111 verbose parsed url   query: null,
+111 verbose parsed url   pathname: '0.4.5',
+111 verbose parsed url   path: '0.4.5',
+111 verbose parsed url   href: '0.4.5' }
+112 verbose addNamed [ 'grunt', '0.4.5' ]
+113 verbose addNamed [ '0.4.5', '0.4.5' ]
+114 silly lockFile 81abf7ad-grunt-0-4-5 grunt@0.4.5
+115 verbose lock grunt@0.4.5 /home/nimadt/.npm/81abf7ad-grunt-0-4-5.lock
+116 verbose cache add [ 'grunt-contrib-compress@^0.13.0', null ]
+117 verbose cache add name=undefined spec="grunt-contrib-compress@^0.13.0" args=["grunt-contrib-compress@^0.13.0",null]
+118 verbose parsed url { protocol: null,
+118 verbose parsed url   slashes: null,
+118 verbose parsed url   auth: null,
+118 verbose parsed url   host: null,
+118 verbose parsed url   port: null,
+118 verbose parsed url   hostname: null,
+118 verbose parsed url   hash: null,
+118 verbose parsed url   search: null,
+118 verbose parsed url   query: null,
+118 verbose parsed url   pathname: 'grunt-contrib-compress@^0.13.0',
+118 verbose parsed url   path: 'grunt-contrib-compress@^0.13.0',
+118 verbose parsed url   href: 'grunt-contrib-compress@^0.13.0' }
+119 verbose cache add name="grunt-contrib-compress" spec="^0.13.0" args=["grunt-contrib-compress","^0.13.0"]
+120 verbose parsed url { protocol: null,
+120 verbose parsed url   slashes: null,
+120 verbose parsed url   auth: null,
+120 verbose parsed url   host: null,
+120 verbose parsed url   port: null,
+120 verbose parsed url   hostname: null,
+120 verbose parsed url   hash: null,
+120 verbose parsed url   search: null,
+120 verbose parsed url   query: null,
+120 verbose parsed url   pathname: '^0.13.0',
+120 verbose parsed url   path: '^0.13.0',
+120 verbose parsed url   href: '^0.13.0' }
+121 verbose addNamed [ 'grunt-contrib-compress', '^0.13.0' ]
+122 verbose addNamed [ null, '>=0.13.0-0 <0.14.0-0' ]
+123 silly lockFile b45d4220-grunt-contrib-compress-0-13-0 grunt-contrib-compress@^0.13.0
+124 verbose lock grunt-contrib-compress@^0.13.0 /home/nimadt/.npm/b45d4220-grunt-contrib-compress-0-13-0.lock
+125 verbose cache add [ 'grunt-contrib-jshint@^0.11.1', null ]
+126 verbose cache add name=undefined spec="grunt-contrib-jshint@^0.11.1" args=["grunt-contrib-jshint@^0.11.1",null]
+127 verbose parsed url { protocol: null,
+127 verbose parsed url   slashes: null,
+127 verbose parsed url   auth: null,
+127 verbose parsed url   host: null,
+127 verbose parsed url   port: null,
+127 verbose parsed url   hostname: null,
+127 verbose parsed url   hash: null,
+127 verbose parsed url   search: null,
+127 verbose parsed url   query: null,
+127 verbose parsed url   pathname: 'grunt-contrib-jshint@^0.11.1',
+127 verbose parsed url   path: 'grunt-contrib-jshint@^0.11.1',
+127 verbose parsed url   href: 'grunt-contrib-jshint@^0.11.1' }
+128 verbose cache add name="grunt-contrib-jshint" spec="^0.11.1" args=["grunt-contrib-jshint","^0.11.1"]
+129 verbose parsed url { protocol: null,
+129 verbose parsed url   slashes: null,
+129 verbose parsed url   auth: null,
+129 verbose parsed url   host: null,
+129 verbose parsed url   port: null,
+129 verbose parsed url   hostname: null,
+129 verbose parsed url   hash: null,
+129 verbose parsed url   search: null,
+129 verbose parsed url   query: null,
+129 verbose parsed url   pathname: '^0.11.1',
+129 verbose parsed url   path: '^0.11.1',
+129 verbose parsed url   href: '^0.11.1' }
+130 verbose addNamed [ 'grunt-contrib-jshint', '^0.11.1' ]
+131 verbose addNamed [ null, '>=0.11.1-0 <0.12.0-0' ]
+132 silly lockFile 09c8e9ed-grunt-contrib-jshint-0-11-1 grunt-contrib-jshint@^0.11.1
+133 verbose lock grunt-contrib-jshint@^0.11.1 /home/nimadt/.npm/09c8e9ed-grunt-contrib-jshint-0-11-1.lock
+134 verbose cache add [ 'grunt-contrib-stylus@0.21.0', null ]
+135 verbose cache add name=undefined spec="grunt-contrib-stylus@0.21.0" args=["grunt-contrib-stylus@0.21.0",null]
+136 verbose parsed url { protocol: null,
+136 verbose parsed url   slashes: null,
+136 verbose parsed url   auth: null,
+136 verbose parsed url   host: null,
+136 verbose parsed url   port: null,
+136 verbose parsed url   hostname: null,
+136 verbose parsed url   hash: null,
+136 verbose parsed url   search: null,
+136 verbose parsed url   query: null,
+136 verbose parsed url   pathname: 'grunt-contrib-stylus@0.21.0',
+136 verbose parsed url   path: 'grunt-contrib-stylus@0.21.0',
+136 verbose parsed url   href: 'grunt-contrib-stylus@0.21.0' }
+137 verbose cache add name="grunt-contrib-stylus" spec="0.21.0" args=["grunt-contrib-stylus","0.21.0"]
+138 verbose parsed url { protocol: null,
+138 verbose parsed url   slashes: null,
+138 verbose parsed url   auth: null,
+138 verbose parsed url   host: null,
+138 verbose parsed url   port: null,
+138 verbose parsed url   hostname: null,
+138 verbose parsed url   hash: null,
+138 verbose parsed url   search: null,
+138 verbose parsed url   query: null,
+138 verbose parsed url   pathname: '0.21.0',
+138 verbose parsed url   path: '0.21.0',
+138 verbose parsed url   href: '0.21.0' }
+139 verbose addNamed [ 'grunt-contrib-stylus', '0.21.0' ]
+140 verbose addNamed [ '0.21.0', '0.21.0' ]
+141 silly lockFile 5c0c93ec-grunt-contrib-stylus-0-21-0 grunt-contrib-stylus@0.21.0
+142 verbose lock grunt-contrib-stylus@0.21.0 /home/nimadt/.npm/5c0c93ec-grunt-contrib-stylus-0-21-0.lock
+143 silly addNameRange { name: 'grunt-bower-clean',
+143 silly addNameRange   range: '>=0.2.2-0 <0.3.0-0',
+143 silly addNameRange   hasData: false }
+144 silly addNameRange { name: 'grunt-contrib-clean',
+144 silly addNameRange   range: '>=0.6.0-0 <0.7.0-0',
+144 silly addNameRange   hasData: false }
+145 verbose cache add [ 'grunt-contrib-watch@0.6.x', null ]
+146 verbose cache add name=undefined spec="grunt-contrib-watch@0.6.x" args=["grunt-contrib-watch@0.6.x",null]
+147 verbose parsed url { protocol: null,
+147 verbose parsed url   slashes: null,
+147 verbose parsed url   auth: null,
+147 verbose parsed url   host: null,
+147 verbose parsed url   port: null,
+147 verbose parsed url   hostname: null,
+147 verbose parsed url   hash: null,
+147 verbose parsed url   search: null,
+147 verbose parsed url   query: null,
+147 verbose parsed url   pathname: 'grunt-contrib-watch@0.6.x',
+147 verbose parsed url   path: 'grunt-contrib-watch@0.6.x',
+147 verbose parsed url   href: 'grunt-contrib-watch@0.6.x' }
+148 verbose cache add name="grunt-contrib-watch" spec="0.6.x" args=["grunt-contrib-watch","0.6.x"]
+149 verbose parsed url { protocol: null,
+149 verbose parsed url   slashes: null,
+149 verbose parsed url   auth: null,
+149 verbose parsed url   host: null,
+149 verbose parsed url   port: null,
+149 verbose parsed url   hostname: null,
+149 verbose parsed url   hash: null,
+149 verbose parsed url   search: null,
+149 verbose parsed url   query: null,
+149 verbose parsed url   pathname: '0.6.x',
+149 verbose parsed url   path: '0.6.x',
+149 verbose parsed url   href: '0.6.x' }
+150 verbose addNamed [ 'grunt-contrib-watch', '0.6.x' ]
+151 verbose addNamed [ null, '>=0.6.0-0 <0.7.0-0' ]
+152 silly lockFile aadc3c1e-grunt-contrib-watch-0-6-x grunt-contrib-watch@0.6.x
+153 verbose lock grunt-contrib-watch@0.6.x /home/nimadt/.npm/aadc3c1e-grunt-contrib-watch-0-6-x.lock
+154 verbose cache add [ 'grunt-exec@0.4.x', null ]
+155 verbose cache add name=undefined spec="grunt-exec@0.4.x" args=["grunt-exec@0.4.x",null]
+156 verbose parsed url { protocol: null,
+156 verbose parsed url   slashes: null,
+156 verbose parsed url   auth: null,
+156 verbose parsed url   host: null,
+156 verbose parsed url   port: null,
+156 verbose parsed url   hostname: null,
+156 verbose parsed url   hash: null,
+156 verbose parsed url   search: null,
+156 verbose parsed url   query: null,
+156 verbose parsed url   pathname: 'grunt-exec@0.4.x',
+156 verbose parsed url   path: 'grunt-exec@0.4.x',
+156 verbose parsed url   href: 'grunt-exec@0.4.x' }
+157 verbose cache add name="grunt-exec" spec="0.4.x" args=["grunt-exec","0.4.x"]
+158 verbose parsed url { protocol: null,
+158 verbose parsed url   slashes: null,
+158 verbose parsed url   auth: null,
+158 verbose parsed url   host: null,
+158 verbose parsed url   port: null,
+158 verbose parsed url   hostname: null,
+158 verbose parsed url   hash: null,
+158 verbose parsed url   search: null,
+158 verbose parsed url   query: null,
+158 verbose parsed url   pathname: '0.4.x',
+158 verbose parsed url   path: '0.4.x',
+158 verbose parsed url   href: '0.4.x' }
+159 verbose addNamed [ 'grunt-exec', '0.4.x' ]
+160 verbose addNamed [ null, '>=0.4.0-0 <0.5.0-0' ]
+161 silly lockFile 159fd8c7-grunt-exec-0-4-x grunt-exec@0.4.x
+162 verbose lock grunt-exec@0.4.x /home/nimadt/.npm/159fd8c7-grunt-exec-0-4-x.lock
+163 verbose cache add [ 'grunt-githooks@^0.3.1', null ]
+164 verbose cache add name=undefined spec="grunt-githooks@^0.3.1" args=["grunt-githooks@^0.3.1",null]
+165 verbose parsed url { protocol: null,
+165 verbose parsed url   slashes: null,
+165 verbose parsed url   auth: null,
+165 verbose parsed url   host: null,
+165 verbose parsed url   port: null,
+165 verbose parsed url   hostname: null,
+165 verbose parsed url   hash: null,
+165 verbose parsed url   search: null,
+165 verbose parsed url   query: null,
+165 verbose parsed url   pathname: 'grunt-githooks@^0.3.1',
+165 verbose parsed url   path: 'grunt-githooks@^0.3.1',
+165 verbose parsed url   href: 'grunt-githooks@^0.3.1' }
+166 verbose cache add name="grunt-githooks" spec="^0.3.1" args=["grunt-githooks","^0.3.1"]
+167 verbose parsed url { protocol: null,
+167 verbose parsed url   slashes: null,
+167 verbose parsed url   auth: null,
+167 verbose parsed url   host: null,
+167 verbose parsed url   port: null,
+167 verbose parsed url   hostname: null,
+167 verbose parsed url   hash: null,
+167 verbose parsed url   search: null,
+167 verbose parsed url   query: null,
+167 verbose parsed url   pathname: '^0.3.1',
+167 verbose parsed url   path: '^0.3.1',
+167 verbose parsed url   href: '^0.3.1' }
+168 verbose addNamed [ 'grunt-githooks', '^0.3.1' ]
+169 verbose addNamed [ null, '>=0.3.1-0 <0.4.0-0' ]
+170 silly lockFile e4ff92bf-grunt-githooks-0-3-1 grunt-githooks@^0.3.1
+171 verbose lock grunt-githooks@^0.3.1 /home/nimadt/.npm/e4ff92bf-grunt-githooks-0-3-1.lock
+172 verbose cache add [ 'grunt-jsbeautifier@*', null ]
+173 verbose cache add name=undefined spec="grunt-jsbeautifier@*" args=["grunt-jsbeautifier@*",null]
+174 verbose parsed url { protocol: null,
+174 verbose parsed url   slashes: null,
+174 verbose parsed url   auth: null,
+174 verbose parsed url   host: null,
+174 verbose parsed url   port: null,
+174 verbose parsed url   hostname: null,
+174 verbose parsed url   hash: null,
+174 verbose parsed url   search: null,
+174 verbose parsed url   query: null,
+174 verbose parsed url   pathname: 'grunt-jsbeautifier@*',
+174 verbose parsed url   path: 'grunt-jsbeautifier@*',
+174 verbose parsed url   href: 'grunt-jsbeautifier@*' }
+175 verbose cache add name="grunt-jsbeautifier" spec="*" args=["grunt-jsbeautifier","*"]
+176 verbose parsed url { protocol: null,
+176 verbose parsed url   slashes: null,
+176 verbose parsed url   auth: null,
+176 verbose parsed url   host: null,
+176 verbose parsed url   port: null,
+176 verbose parsed url   hostname: null,
+176 verbose parsed url   hash: null,
+176 verbose parsed url   search: null,
+176 verbose parsed url   query: null,
+176 verbose parsed url   pathname: '*',
+176 verbose parsed url   path: '*',
+176 verbose parsed url   href: '*' }
+177 verbose addNamed [ 'grunt-jsbeautifier', '*' ]
+178 verbose addNamed [ null, '*' ]
+179 silly lockFile 3768e70d-grunt-jsbeautifier grunt-jsbeautifier@*
+180 verbose lock grunt-jsbeautifier@* /home/nimadt/.npm/3768e70d-grunt-jsbeautifier.lock
+181 verbose cache add [ 'grunt-node-webkit-builder@0.1.x', null ]
+182 verbose cache add name=undefined spec="grunt-node-webkit-builder@0.1.x" args=["grunt-node-webkit-builder@0.1.x",null]
+183 verbose parsed url { protocol: null,
+183 verbose parsed url   slashes: null,
+183 verbose parsed url   auth: null,
+183 verbose parsed url   host: null,
+183 verbose parsed url   port: null,
+183 verbose parsed url   hostname: null,
+183 verbose parsed url   hash: null,
+183 verbose parsed url   search: null,
+183 verbose parsed url   query: null,
+183 verbose parsed url   pathname: 'grunt-node-webkit-builder@0.1.x',
+183 verbose parsed url   path: 'grunt-node-webkit-builder@0.1.x',
+183 verbose parsed url   href: 'grunt-node-webkit-builder@0.1.x' }
+184 verbose cache add name="grunt-node-webkit-builder" spec="0.1.x" args=["grunt-node-webkit-builder","0.1.x"]
+185 verbose parsed url { protocol: null,
+185 verbose parsed url   slashes: null,
+185 verbose parsed url   auth: null,
+185 verbose parsed url   host: null,
+185 verbose parsed url   port: null,
+185 verbose parsed url   hostname: null,
+185 verbose parsed url   hash: null,
+185 verbose parsed url   search: null,
+185 verbose parsed url   query: null,
+185 verbose parsed url   pathname: '0.1.x',
+185 verbose parsed url   path: '0.1.x',
+185 verbose parsed url   href: '0.1.x' }
+186 verbose addNamed [ 'grunt-node-webkit-builder', '0.1.x' ]
+187 verbose addNamed [ null, '>=0.1.0-0 <0.2.0-0' ]
+188 silly lockFile 8a04d67f-grunt-node-webkit-builder-0-1-x grunt-node-webkit-builder@0.1.x
+189 verbose lock grunt-node-webkit-builder@0.1.x /home/nimadt/.npm/8a04d67f-grunt-node-webkit-builder-0-1-x.lock
+190 verbose cache add [ 'grunt-shell@^1.1.2', null ]
+191 verbose cache add name=undefined spec="grunt-shell@^1.1.2" args=["grunt-shell@^1.1.2",null]
+192 verbose parsed url { protocol: null,
+192 verbose parsed url   slashes: null,
+192 verbose parsed url   auth: null,
+192 verbose parsed url   host: null,
+192 verbose parsed url   port: null,
+192 verbose parsed url   hostname: null,
+192 verbose parsed url   hash: null,
+192 verbose parsed url   search: null,
+192 verbose parsed url   query: null,
+192 verbose parsed url   pathname: 'grunt-shell@^1.1.2',
+192 verbose parsed url   path: 'grunt-shell@^1.1.2',
+192 verbose parsed url   href: 'grunt-shell@^1.1.2' }
+193 verbose cache add name="grunt-shell" spec="^1.1.2" args=["grunt-shell","^1.1.2"]
+194 verbose parsed url { protocol: null,
+194 verbose parsed url   slashes: null,
+194 verbose parsed url   auth: null,
+194 verbose parsed url   host: null,
+194 verbose parsed url   port: null,
+194 verbose parsed url   hostname: null,
+194 verbose parsed url   hash: null,
+194 verbose parsed url   search: null,
+194 verbose parsed url   query: null,
+194 verbose parsed url   pathname: '^1.1.2',
+194 verbose parsed url   path: '^1.1.2',
+194 verbose parsed url   href: '^1.1.2' }
+195 verbose addNamed [ 'grunt-shell', '^1.1.2' ]
+196 verbose addNamed [ null, '>=1.1.2-0 <2.0.0-0' ]
+197 silly lockFile 42fbab46-grunt-shell-1-1-2 grunt-shell@^1.1.2
+198 verbose lock grunt-shell@^1.1.2 /home/nimadt/.npm/42fbab46-grunt-shell-1-1-2.lock
+199 verbose cache add [ 'load-grunt-tasks@3.1.0', null ]
+200 verbose cache add name=undefined spec="load-grunt-tasks@3.1.0" args=["load-grunt-tasks@3.1.0",null]
+201 verbose parsed url { protocol: null,
+201 verbose parsed url   slashes: null,
+201 verbose parsed url   auth: null,
+201 verbose parsed url   host: null,
+201 verbose parsed url   port: null,
+201 verbose parsed url   hostname: null,
+201 verbose parsed url   hash: null,
+201 verbose parsed url   search: null,
+201 verbose parsed url   query: null,
+201 verbose parsed url   pathname: 'load-grunt-tasks@3.1.0',
+201 verbose parsed url   path: 'load-grunt-tasks@3.1.0',
+201 verbose parsed url   href: 'load-grunt-tasks@3.1.0' }
+202 verbose cache add name="load-grunt-tasks" spec="3.1.0" args=["load-grunt-tasks","3.1.0"]
+203 verbose parsed url { protocol: null,
+203 verbose parsed url   slashes: null,
+203 verbose parsed url   auth: null,
+203 verbose parsed url   host: null,
+203 verbose parsed url   port: null,
+203 verbose parsed url   hostname: null,
+203 verbose parsed url   hash: null,
+203 verbose parsed url   search: null,
+203 verbose parsed url   query: null,
+203 verbose parsed url   pathname: '3.1.0',
+203 verbose parsed url   path: '3.1.0',
+203 verbose parsed url   href: '3.1.0' }
+204 verbose addNamed [ 'load-grunt-tasks', '3.1.0' ]
+205 verbose addNamed [ '3.1.0', '3.1.0' ]
+206 silly lockFile afccba54-load-grunt-tasks-3-1-0 load-grunt-tasks@3.1.0
+207 verbose lock load-grunt-tasks@3.1.0 /home/nimadt/.npm/afccba54-load-grunt-tasks-3-1-0.lock
+208 verbose cache add [ 'nw-gyp@^0.12.4', null ]
+209 verbose cache add name=undefined spec="nw-gyp@^0.12.4" args=["nw-gyp@^0.12.4",null]
+210 verbose parsed url { protocol: null,
+210 verbose parsed url   slashes: null,
+210 verbose parsed url   auth: null,
+210 verbose parsed url   host: null,
+210 verbose parsed url   port: null,
+210 verbose parsed url   hostname: null,
+210 verbose parsed url   hash: null,
+210 verbose parsed url   search: null,
+210 verbose parsed url   query: null,
+210 verbose parsed url   pathname: 'nw-gyp@^0.12.4',
+210 verbose parsed url   path: 'nw-gyp@^0.12.4',
+210 verbose parsed url   href: 'nw-gyp@^0.12.4' }
+211 verbose cache add name="nw-gyp" spec="^0.12.4" args=["nw-gyp","^0.12.4"]
+212 verbose parsed url { protocol: null,
+212 verbose parsed url   slashes: null,
+212 verbose parsed url   auth: null,
+212 verbose parsed url   host: null,
+212 verbose parsed url   port: null,
+212 verbose parsed url   hostname: null,
+212 verbose parsed url   hash: null,
+212 verbose parsed url   search: null,
+212 verbose parsed url   query: null,
+212 verbose parsed url   pathname: '^0.12.4',
+212 verbose parsed url   path: '^0.12.4',
+212 verbose parsed url   href: '^0.12.4' }
+213 verbose addNamed [ 'nw-gyp', '^0.12.4' ]
+214 verbose addNamed [ null, '>=0.12.4-0 <0.13.0-0' ]
+215 silly lockFile 5073bc79-nw-gyp-0-12-4 nw-gyp@^0.12.4
+216 verbose lock nw-gyp@^0.12.4 /home/nimadt/.npm/5073bc79-nw-gyp-0-12-4.lock
+217 verbose cache add [ 'stylus@0.50.0', null ]
+218 verbose cache add name=undefined spec="stylus@0.50.0" args=["stylus@0.50.0",null]
+219 verbose parsed url { protocol: null,
+219 verbose parsed url   slashes: null,
+219 verbose parsed url   auth: null,
+219 verbose parsed url   host: null,
+219 verbose parsed url   port: null,
+219 verbose parsed url   hostname: null,
+219 verbose parsed url   hash: null,
+219 verbose parsed url   search: null,
+219 verbose parsed url   query: null,
+219 verbose parsed url   pathname: 'stylus@0.50.0',
+219 verbose parsed url   path: 'stylus@0.50.0',
+219 verbose parsed url   href: 'stylus@0.50.0' }
+220 verbose cache add name="stylus" spec="0.50.0" args=["stylus","0.50.0"]
+221 verbose parsed url { protocol: null,
+221 verbose parsed url   slashes: null,
+221 verbose parsed url   auth: null,
+221 verbose parsed url   host: null,
+221 verbose parsed url   port: null,
+221 verbose parsed url   hostname: null,
+221 verbose parsed url   hash: null,
+221 verbose parsed url   search: null,
+221 verbose parsed url   query: null,
+221 verbose parsed url   pathname: '0.50.0',
+221 verbose parsed url   path: '0.50.0',
+221 verbose parsed url   href: '0.50.0' }
+222 verbose addNamed [ 'stylus', '0.50.0' ]
+223 verbose addNamed [ '0.50.0', '0.50.0' ]
+224 silly lockFile d62b8ad9-stylus-0-50-0 stylus@0.50.0
+225 verbose lock stylus@0.50.0 /home/nimadt/.npm/d62b8ad9-stylus-0-50-0.lock
+226 verbose already installed skipping adm-zip@0.4.7 /home/nimadt/Downloads
+227 verbose url raw grunt-bower-clean
+228 verbose url resolving [ 'https://registry.npmjs.org/', './grunt-bower-clean' ]
+229 verbose url resolved https://registry.npmjs.org/grunt-bower-clean
+230 info trying registry request attempt 1 at 14:21:28
+231 http GET https://registry.npmjs.org/grunt-bower-clean
+232 verbose url raw bower/1.4.1
+233 verbose url resolving [ 'https://registry.npmjs.org/', './bower/1.4.1' ]
+234 verbose url resolved https://registry.npmjs.org/bower/1.4.1
+235 info trying registry request attempt 1 at 14:21:28
+236 http GET https://registry.npmjs.org/bower/1.4.1
+237 verbose url raw grunt-contrib-clean
+238 verbose url resolving [ 'https://registry.npmjs.org/', './grunt-contrib-clean' ]
+239 verbose url resolved https://registry.npmjs.org/grunt-contrib-clean
+240 info trying registry request attempt 1 at 14:21:28
+241 http GET https://registry.npmjs.org/grunt-contrib-clean
+242 silly addNameRange { name: 'grunt-contrib-compress',
+242 silly addNameRange   range: '>=0.13.0-0 <0.14.0-0',
+242 silly addNameRange   hasData: false }
+243 silly addNameRange { name: 'grunt-contrib-jshint',
+243 silly addNameRange   range: '>=0.11.1-0 <0.12.0-0',
+243 silly addNameRange   hasData: false }
+244 verbose cache add [ 'airplay-js@git+https://git.popcorntime.io/mirrors/node-airplay-js.git',
+244 verbose cache add   null ]
+245 verbose cache add name=undefined spec="airplay-js@git+https://git.popcorntime.io/mirrors/node-airplay-js.git" args=["airplay-js@git+https://git.popcorntime.io/mirrors/node-airplay-js.git",null]
+246 verbose parsed url { protocol: null,
+246 verbose parsed url   slashes: null,
+246 verbose parsed url   auth: null,
+246 verbose parsed url   host: null,
+246 verbose parsed url   port: null,
+246 verbose parsed url   hostname: null,
+246 verbose parsed url   hash: null,
+246 verbose parsed url   search: null,
+246 verbose parsed url   query: null,
+246 verbose parsed url   pathname: 'airplay-js@git+https://git.popcorntime.io/mirrors/node-airplay-js.git',
+246 verbose parsed url   path: 'airplay-js@git+https://git.popcorntime.io/mirrors/node-airplay-js.git',
+246 verbose parsed url   href: 'airplay-js@git+https://git.popcorntime.io/mirrors/node-airplay-js.git' }
+247 verbose cache add name="airplay-js" spec="git+https://git.popcorntime.io/mirrors/node-airplay-js.git" args=["airplay-js","git+https://git.popcorntime.io/mirrors/node-airplay-js.git"]
+248 verbose parsed url { protocol: 'git+https:',
+248 verbose parsed url   slashes: true,
+248 verbose parsed url   auth: null,
+248 verbose parsed url   host: 'git.popcorntime.io',
+248 verbose parsed url   port: null,
+248 verbose parsed url   hostname: 'git.popcorntime.io',
+248 verbose parsed url   hash: null,
+248 verbose parsed url   search: null,
+248 verbose parsed url   query: null,
+248 verbose parsed url   pathname: '/mirrors/node-airplay-js.git',
+248 verbose parsed url   path: '/mirrors/node-airplay-js.git',
+248 verbose parsed url   href: 'git+https://git.popcorntime.io/mirrors/node-airplay-js.git' }
+249 silly lockFile 2771d188-e-io-mirrors-node-airplay-js-git git+https://git.popcorntime.io/mirrors/node-airplay-js.git
+250 verbose lock git+https://git.popcorntime.io/mirrors/node-airplay-js.git /home/nimadt/.npm/2771d188-e-io-mirrors-node-airplay-js-git.lock
+251 verbose url raw grunt/0.4.5
+252 verbose url resolving [ 'https://registry.npmjs.org/', './grunt/0.4.5' ]
+253 verbose url resolved https://registry.npmjs.org/grunt/0.4.5
+254 info trying registry request attempt 1 at 14:21:28
+255 http GET https://registry.npmjs.org/grunt/0.4.5
+256 verbose url raw grunt-contrib-compress
+257 verbose url resolving [ 'https://registry.npmjs.org/', './grunt-contrib-compress' ]
+258 verbose url resolved https://registry.npmjs.org/grunt-contrib-compress
+259 info trying registry request attempt 1 at 14:21:28
+260 http GET https://registry.npmjs.org/grunt-contrib-compress
+261 verbose url raw grunt-contrib-jshint
+262 verbose url resolving [ 'https://registry.npmjs.org/', './grunt-contrib-jshint' ]
+263 verbose url resolved https://registry.npmjs.org/grunt-contrib-jshint
+264 info trying registry request attempt 1 at 14:21:28
+265 http GET https://registry.npmjs.org/grunt-contrib-jshint
+266 silly addNameRange { name: 'grunt-contrib-watch',
+266 silly addNameRange   range: '>=0.6.0-0 <0.7.0-0',
+266 silly addNameRange   hasData: false }
+267 silly addNameRange { name: 'grunt-exec',
+267 silly addNameRange   range: '>=0.4.0-0 <0.5.0-0',
+267 silly addNameRange   hasData: false }
+268 silly addNameRange { name: 'grunt-githooks',
+268 silly addNameRange   range: '>=0.3.1-0 <0.4.0-0',
+268 silly addNameRange   hasData: false }
+269 silly addNameRange { name: 'grunt-jsbeautifier', range: '*', hasData: false }
+270 silly addNameRange { name: 'grunt-node-webkit-builder',
+270 silly addNameRange   range: '>=0.1.0-0 <0.2.0-0',
+270 silly addNameRange   hasData: false }
+271 silly addNameRange { name: 'grunt-shell',
+271 silly addNameRange   range: '>=1.1.2-0 <2.0.0-0',
+271 silly addNameRange   hasData: false }
+272 silly addNameRange { name: 'nw-gyp', range: '>=0.12.4-0 <0.13.0-0', hasData: false }
+273 verbose url raw grunt-contrib-stylus/0.21.0
+274 verbose url resolving [ 'https://registry.npmjs.org/',
+274 verbose url resolving   './grunt-contrib-stylus/0.21.0' ]
+275 verbose url resolved https://registry.npmjs.org/grunt-contrib-stylus/0.21.0
+276 info trying registry request attempt 1 at 14:21:28
+277 http GET https://registry.npmjs.org/grunt-contrib-stylus/0.21.0
+278 verbose url raw grunt-contrib-watch
+279 verbose url resolving [ 'https://registry.npmjs.org/', './grunt-contrib-watch' ]
+280 verbose url resolved https://registry.npmjs.org/grunt-contrib-watch
+281 info trying registry request attempt 1 at 14:21:28
+282 http GET https://registry.npmjs.org/grunt-contrib-watch
+283 verbose url raw grunt-exec
+284 verbose url resolving [ 'https://registry.npmjs.org/', './grunt-exec' ]
+285 verbose url resolved https://registry.npmjs.org/grunt-exec
+286 info trying registry request attempt 1 at 14:21:28
+287 http GET https://registry.npmjs.org/grunt-exec
+288 verbose url raw grunt-githooks
+289 verbose url resolving [ 'https://registry.npmjs.org/', './grunt-githooks' ]
+290 verbose url resolved https://registry.npmjs.org/grunt-githooks
+291 info trying registry request attempt 1 at 14:21:28
+292 http GET https://registry.npmjs.org/grunt-githooks
+293 verbose url raw grunt-jsbeautifier
+294 verbose url resolving [ 'https://registry.npmjs.org/', './grunt-jsbeautifier' ]
+295 verbose url resolved https://registry.npmjs.org/grunt-jsbeautifier
+296 info trying registry request attempt 1 at 14:21:28
+297 http GET https://registry.npmjs.org/grunt-jsbeautifier
+298 verbose url raw grunt-node-webkit-builder
+299 verbose url resolving [ 'https://registry.npmjs.org/', './grunt-node-webkit-builder' ]
+300 verbose url resolved https://registry.npmjs.org/grunt-node-webkit-builder
+301 info trying registry request attempt 1 at 14:21:28
+302 http GET https://registry.npmjs.org/grunt-node-webkit-builder
+303 verbose url raw grunt-shell
+304 verbose url resolving [ 'https://registry.npmjs.org/', './grunt-shell' ]
+305 verbose url resolved https://registry.npmjs.org/grunt-shell
+306 info trying registry request attempt 1 at 14:21:28
+307 http GET https://registry.npmjs.org/grunt-shell
+308 verbose url raw load-grunt-tasks/3.1.0
+309 verbose url resolving [ 'https://registry.npmjs.org/', './load-grunt-tasks/3.1.0' ]
+310 verbose url resolved https://registry.npmjs.org/load-grunt-tasks/3.1.0
+311 info trying registry request attempt 1 at 14:21:28
+312 http GET https://registry.npmjs.org/load-grunt-tasks/3.1.0
+313 verbose url raw nw-gyp
+314 verbose url resolving [ 'https://registry.npmjs.org/', './nw-gyp' ]
+315 verbose url resolved https://registry.npmjs.org/nw-gyp
+316 info trying registry request attempt 1 at 14:21:28
+317 http GET https://registry.npmjs.org/nw-gyp
+318 verbose url raw stylus/0.50.0
+319 verbose url resolving [ 'https://registry.npmjs.org/', './stylus/0.50.0' ]
+320 verbose url resolved https://registry.npmjs.org/stylus/0.50.0
+321 info trying registry request attempt 1 at 14:21:28
+322 http GET https://registry.npmjs.org/stylus/0.50.0
+323 verbose addRemoteGit [ 'https://git.popcorntime.io/mirrors/node-airplay-js.git',
+323 verbose addRemoteGit   'master' ]
+324 error git clone https://git.popcorntime.io/mirrors/chromecast-js.git Cloning into bare repository '/home/nimadt/.npm/_git-remotes/https-git-popcorntime-io-mirrors-chromecast-js-git-6d4f9b64'...
+324 error git clone https://git.popcorntime.io/mirrors/chromecast-js.git fatal: unable to access 'https://git.popcorntime.io/mirrors/chromecast-js.git/': Could not resolve host: git.popcorntime.io
+325 silly lockFile 6d4f9b64-ime-io-mirrors-chromecast-js-git https://git.popcorntime.io/mirrors/chromecast-js.git
+326 error Error: Command failed: Cloning into bare repository '/home/nimadt/.npm/_git-remotes/https-git-popcorntime-io-mirrors-chromecast-js-git-6d4f9b64'...
+326 error fatal: unable to access 'https://git.popcorntime.io/mirrors/chromecast-js.git/': Could not resolve host: git.popcorntime.io
+326 error
+326 error     at ChildProcess.exithandler (child_process.js:637:15)
+326 error     at ChildProcess.EventEmitter.emit (events.js:98:17)
+326 error     at maybeClose (child_process.js:743:16)
+326 error     at Socket.<anonymous> (child_process.js:956:11)
+326 error     at Socket.EventEmitter.emit (events.js:95:17)
+326 error     at Pipe.close (net.js:466:12)
+327 error If you need help, you may report this log at:
+327 error     <http://github.com/isaacs/npm/issues>
+327 error or email it to:
+327 error     <npm-@googlegroups.com>
+328 error System Linux 3.14.0
+329 error command "/usr/bin/nodejs" "/usr/bin/npm" "install"
+330 error cwd /home/nimadt/Downloads/__work/s500/app/js
+331 error node -v v0.10.25
+332 error npm -v 1.3.10
+333 error code 128
+334 verbose exit [ 1, true ]

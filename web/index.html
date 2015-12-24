@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!--<script src="Chart.js/Chart.js"></script>
+    <script src="test2.js"></script>
+    <script type="text/javascript" src="src/smoothie-master/standalone/require.js" defer></script>
+    -->
+    <script src="src/js/require.js"></script>
+    
+    <!--<script>
+    var x =1;
+    require(['node_modules/serialport/serialport.js'], function() {
+        // Configuration loaded now, safe to do other require calls
+        // that depend on that config.
+        console.log("yes!!");
+        x = this.SerialPort;
+    });
+    </script>
+    <script src="src/js/elements.js" defer></script>
+    <script src="src/js/plot.js" defer></script>
+    <script src="src/js/main2.js" defer></script>
+    
+    <script src="src/js/test.js" defer></script>
+    -->
+    <style>
+      #header {
+        background-color:black;
+        color:white;
+        text-align:center;
+        padding:5px;
+      }
+      #stat {
+        line-height:30px;
+        background-color:#eeeeee;
+        height:0px;
+        width:250px;
+        float:left;
+        padding:5px;
+      }
+      #main {
+        width:560px;
+        float:left;
+        padding:10px;
+      }
+      #footer {
+        background-color:black;
+        color:white;
+        clear:both;
+        text-align:center;
+        padding:5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header">
+    <h1>A Game</h1>
+    <h2>Super unfair, unbeatable street-soccer </h2>
+    </div>
+    
+    <div id="stat">
+      <p id="demo">Hi!</p>
+        
+      <!--<canvas id="myCanvas" width="200" height="100" style="border:1px solid #d3d3d3;">
+            Your browser does not support the HTML5 canvas tag.</canvas>
+      -->
+      <canvas id="myChart" width="200" height="100"></canvas>
+      <canvas id="myChart2" width="200" height="100"></canvas>
+      <canvas id="myChart3" width="200" height="200"></canvas>
+    </div>
+    
+    <div id="main">
+    <canvas id="mygame" width="400" height="550"></canvas>
+    </div>
+    <script src="src/js/2.js"></script>
+    
+  </body>
+  
+  
+</html>
+
