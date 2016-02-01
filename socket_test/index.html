@@ -40,7 +40,7 @@
     function a(n){return String.fromCharCode(n);}
     
     console.log('run this?');
-    var socket = io('http://localhost:8080');
+    var socket = io('http://localhost:8000',{origins:'10.0.0.21'});
     socket.on('news', function (data) {
       console.log(data);
       socket.emit('my other event', {'I got': data });

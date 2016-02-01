@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<head>
+  <!--<script type ="text/javascript" src="/my.js"></script>-->
+  <script src="http://cdn.peerjs.com/0.3/peer.js"></script>
+</head>
+<body>
+  <canvas id='con' width="360" height="360" style="background-color:#5577ff;"></canvas>
+  <div id='hi' width="300px" height="400px" onmousemove="this.innerHTML = event.pageX+':'+event.pageY">heeelo</div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var peer = new Peer('kivi', {key: 'ihbxylb73u15rk9'});
+    // You can pick your own id or omit the id if you want to get a random one from the server.
+    
+    peer.on('open', function(id) {
+      console.log('My peer ID is: ' + id);
+    });
+    
+    var conn = peer.connect('nimi');
+    conn.on('open', function(){
+      conn.send('hi!');
+    });
+    
+    peer.on('connection', function(conn) {
+      conn.on('data', function(data){
+        // Will print 'hi!'
+        console.log(data);
+        //to_arduino(data);
+        socket.emit('to arduino', data);
+      });
+    });
+    
+    /*
+    // for now without video
+    var video;
+    video = document.querySelector("#player");
+    peer.on('call', function(call) {
+      // Answer the call, providing our mediaStream
+      //call.answer(mediaStream);
+      call.answer(null);
+      console.log("Video call!");
+      call.on('stream', function(stream) {
+        // `stream` is the MediaStream of the remote peer.
+        // Here you'd add it to an HTML video/canvas element.
+        //video = document.querySelector("#player");
+        console.log(video);
+        video.src = window.URL.createObjectURL(stream);
+      });
+    });
+    
+    
+    function success(stream){
+      var video = document.querySelector("#player");
+      video.src = window.URL.createObjectURL(stream);
+    }
+    
+    */
+    
+    
+    /*
+    var getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+    peer.on('call', function(call) {
+        call.on('stream', function(remoteStream) {
+          // Show stream in some video/canvas element.
+          var video = document.querySelector("#player");
+          video.src = window.URL.createObjectURL(remotestream);
+        });
+      
+      //getUserMedia(
+      
+      navigator.webkitGetUserMedia({video: true, audio: true}, function(stream) {
+        call.answer(stream); // Answer the call with an A/V stream.
+        call.on('stream', function(remoteStream) {
+          // Show stream in some video/canvas element.
+          var video = document.querySelector("#player");
+          video.src = window.URL.createObjectURL(remotestream);
+        });
+      }, function(err) {
+        console.log('Failed to get local stream' ,err);
+      });
+      
+    });
+    */
+    
+    //  setTimeout(function(){ 1;}, 2000);
+    function sleep(milliseconds) {
+      var start = new Date().getTime();
+      for (var i = 0; i < 1e7; i++) {
+        if ((new Date().getTime() - start) > milliseconds){
+          break;
+        }
+      }
+    }
+    var t0 = new Date().getTime();
+    var t_flag = new Date().getTime();
+    var dt = 10;
+    
+    function time_up(dt) {
+      var flag = false;
+      t_flag = new Date().getTime();
+      if (t_flag - t0 > dt ) {
+        flag = true;
+        t0 = t_flag;
+      }
+      return flag;
+    }
+    
+    function to_arduino(data) {
+      var seq ='';
+      for (i in data) {
+        seq += String.CharCode(data[i]);
+      }
+    }
+    
+    function a(n){return String.fromCharCode(n);}
+    
+    console.log('run this?');
+    var socket = io('http://localhost:8003',{origins:'10.0.0.21'});
+    socket.on('news', function (data) {
+      console.log(data);
+      socket.emit('echo data', {'I got': data });
+    });
+    
+    var div, con;
+    
+    var fun = function(){
+      div.innerHTML = 'Mouse here: '+ event.pageX+':'+event.pageY;
+      if (time_up(dt)) {
+        console.log(div.innerHTML);
+        socket.emit('echo data',  event.pageX+':'+event.pageY);
+        var xr = parseInt(event.pageX/2 /127);
+        var x = parseInt(event.pageX/2 % 127);
+        var yr = parseInt(event.pageY/2 /127);
+        var y = parseInt(event.pageY/2 % 127);
+        console.log(127*xr,x,127*yr,y,1);
+        socket.emit('to arduino', String.fromCharCode(127*xr,x,127*yr,y,1));
+      }
+    };
+    
+    
+    window.onload = function() {
+      div = document.getElementById('hi');
+      con = document.getElementById('con');
+      con.addEventListener('mousemove', fun);
+    };
+  </script>
+  
+</body>

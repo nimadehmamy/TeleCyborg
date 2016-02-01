@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# npm install -g cordova
+# dependencies may be required as well
+
+i="mobileApp"
+if [ "$1" ]
+then
+  i=$1
+fi
+
+echo "making app in $i"
+
+cordova create $i
+
+
+pwd
+cd ..
+pwd
