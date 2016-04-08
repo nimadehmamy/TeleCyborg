@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <head>
+  <meta name="description" content="Server side of p2p control">
   <!--<script type ="text/javascript" src="/my.js"></script>-->
   <script src="http://cdn.peerjs.com/0.3/peer.js"></script>
 </head>
@@ -21,12 +22,14 @@
     });
     
     peer.on('connection', function(conn) {
-      conn.on('data', function(data){
-        // Will print 'hi!'
-        console.log(data);
-        //to_arduino(data);
-        socket.emit('to arduino', data);
-      });
+      if (time_up(1000)){
+        conn.on('data', function(data){
+          // Will print 'hi!'
+          console.log(data);
+          //to_arduino(data);
+          socket.emit('to arduino', data);
+        });
+      }
     });
     
     /*

@@ -1,0 +1,62 @@
+
+//  setTimeout(function(){ 1;}, 2000);
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+}
+var t0 = new Date().getTime();
+var t_flag = new Date().getTime();
+var dt = 10;
+
+function time_up(dt) {
+  var flag = false;
+  t_flag = new Date().getTime();
+  if (t_flag - t0 > dt ) {
+    flag = true;
+    t0 = t_flag;
+  }
+  return flag;
+}
+
+function to_arduino(data) {
+  var seq ='';
+  for (i in data) {
+    seq += String.CharCode(data[i]);
+  }
+}
+
+function a(n){return String.fromCharCode(n);}
+
+console.log('run this?');
+var socket = io('http://localhost:8003',{origins:'10.0.0.21'});
+socket.on('news', function (data) {
+  console.log(data);
+  socket.emit('echo data', {'I got': data });
+});
+
+var div, con;
+
+var fun = function(){
+  div.innerHTML = 'Mouse here: '+ event.pageX+':'+event.pageY;
+  if (time_up(dt)) {
+    console.log(div.innerHTML);
+    socket.emit('echo data',  event.pageX+':'+event.pageY);
+    var xr = parseInt(event.pageX/2 /127);
+    var x = parseInt(event.pageX/2 % 127);
+    var yr = parseInt(event.pageY/2 /127);
+    var y = parseInt(event.pageY/2 % 127);
+    console.log(127*xr,x,127*yr,y,1);
+    socket.emit('to arduino', String.fromCharCode(127*xr,x,127*yr,y,1));
+  }
+};
+
+
+window.onload = function() {
+  div = document.getElementById('hi');
+  con = document.getElementById('con');
+  con.addEventListener('mousemove', fun);
+};

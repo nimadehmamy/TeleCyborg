@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<head>
+  <!--<script type ="text/javascript" src="/my.js"></script>-->
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <script src="http://cdn.peerjs.com/0.3/peer.js"></script>
+  
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 400;
+    }
+  </style>
+</head>
+<body>
+  <canvas id='con' width="360" height="360" style="background-color:#5577ff;"></canvas>
+  <div id='hi' width="300px" height="400px" onmousemove="this.innerHTML = event.pageX+':'+event.pageY">heeelo</div>
+  <script src="/socket.io/socket.io.js"></script>
+  
+  
+  <script src="/js/rtc.js">/* Real Time Communication setup */</script>
+  <script src="/js/main.js"></script>
+  
+  <script>
+    y =10;
+  </script>
+  
+</body>

@@ -1,4 +1,10 @@
-var peer = new Peer('nimi', {key: 'ihbxylb73u15rk9'});
+var peer = new Peer('nimi',
+  {key: 'ihbxylb73u15rk9'},
+  options ={
+    config: {
+      'iceServers': [{ 'url': 'stun:stun.l.google.com:19302' }]
+    }
+  });
 // You can pick your own id or omit the id if you want to get a random one from the server.
 
 peer.on('open', function(id) {
@@ -47,7 +53,7 @@ navigator.webkitGetUserMedia({video: true, audio: true}, function(stream) {
 
 var t0 = new Date().getTime();
 var t_flag = new Date().getTime();
-var dt = 300;
+var dt = 200;
 
 function time_up(dt) {
   var flag = false;
@@ -60,21 +66,6 @@ function time_up(dt) {
 }
 
 var div, con;
-    
-var fun = function(){
-  div.innerHTML = 'Mouse here: '+ event.pageX+':'+event.pageY;
-  if (time_up(dt)) {
-    console.log(div.innerHTML);
-    //socket.emit('echo data',  event.pageX+':'+event.pageY);
-    var xr = parseInt(event.pageX/2 /127);
-    var x = parseInt(event.pageX/2 % 127);
-    var yr = parseInt(event.pageY/2 /127);
-    var y = parseInt(event.pageY/2 % 127);
-    console.log(127*xr,x,127*yr,y,1);
-    //socket.emit('to arduino', String.fromCharCode(127*xr,x,127*yr,y,1));
-    conn.send(String.fromCharCode(127*xr,x,127*yr,y,1))
-  }
-};
 
 function canvasMouseMove( event ){
   div.innerHTML = 'Mouse here: '+ event.pageX+':'+event.pageY;
@@ -87,18 +78,14 @@ function canvasMouseMove( event ){
     var y = parseInt(event.pageY/2 % 127);
     console.log(127*xr,x,127*yr,y,1);
     //socket.emit('to arduino', String.fromCharCode(127*xr,x,127*yr,y,1));
-    conn.send(String.fromCharCode(127*xr,x,127*yr,y,1))
+    conn.send(String.fromCharCode(127*xr,x,127*yr,y,1));
   }
-};
+}
 
-var ee;
 function onDocumentTouchStart( event ) {
-	
 	event.preventDefault();
-	//console.log('???::',event.touches[0].clientX,event.touches[0].clientY);
 	event.pageX = event.touches[0].pageX;
 	event.pageY = event.touches[0].pageY;
-	//console.log('111?::',event.pageX,event.pageY);
 	canvasMouseMove( event );
   
 }
