@@ -1,4 +1,4 @@
-var peer = new Peer('nimi1',
+var peer = new Peer('nimi2',
   {key: 'ihbxylb73u15rk9'},
   options ={
     config: {
@@ -11,26 +11,23 @@ peer.on('open', function(id) {
   console.log('My peer ID is: ' + id);
 });
 
-var conn = peer.connect('kivi');
-// conn.on('open', function(){
-//   conn.send('hi!');
-// });
+var otherPeer = 'kivi',
+    conn = peer.connect(otherPeer);
 
 conn.on('open', function() {
-  // Receive messages
-  conn.on('data', function(data) {
-    console.log('Received', data);
-  });
-
-  // Send messages
-  conn.send('Hello!');
+    // Receive messages
+    conn.on('data', function(data) {
+        console.log('Peer '+otherPeer+' says:\n', data);
+    });
+    
+    // Send messages
+    conn.send('Hello!');
 });
 
 peer.on('connection', function(conn1) {
-  conn1.on('data', function(data){
-    // Will print 'hi!'
-    console.log(data);
-  });
+    conn1.on('data', function(data){
+        console.log(data);
+    });
 });
 
 
@@ -61,36 +58,49 @@ navigator.webkitGetUserMedia({video: true, audio: true}, function(stream) {
 
 */
 
-var t0 = new Date().getTime();
-var t_flag = new Date().getTime();
-var dt = 200;
+var t0 = new Date().getTime(),
+    t_flag = new Date().getTime(),
+    dt = 200,
+    laserOn = 1;
 
 function time_up(dt) {
-  var flag = false;
-  t_flag = new Date().getTime();
-  if (t_flag - t0 > dt ) {
-    flag = true;
-    t0 = t_flag;
-  }
-  return flag;
+    var flag = false;
+    t_flag = new Date().getTime();
+    if (t_flag - t0 > dt ) {
+        flag = true;
+        t0 = t_flag;
+    }
+    return flag;
 }
 
 var div, con;
 
+// function canvasMouseMove( event ){
+//   div.innerHTML = 'Mouse here: '+ event.pageX+':'+event.pageY;
+//   if (time_up(dt)) {
+//     console.log(div.innerHTML);
+//     //socket.emit('echo data',  event.pageX+':'+event.pageY);
+//     var xr = parseInt(event.pageX/2 /127);
+//     var x = parseInt(event.pageX/2 % 127);
+//     var yr = parseInt(event.pageY/2 /127);
+//     var y = parseInt(event.pageY/2 % 127);
+//     console.log(127*xr,x,127*yr,y,1);
+//     //socket.emit('to arduino', String.fromCharCode(127*xr,x,127*yr,y,1));
+//     //conn.send(String.fromCharCode(127*xr,x,127*yr,y,1));
+//     sendData('arduino', String.fromCharCode(127*xr,x,127*yr,y,1))
+//   }
+// }
+
 function canvasMouseMove( event ){
-  div.innerHTML = 'Mouse here: '+ event.pageX+':'+event.pageY;
-  if (time_up(dt)) {
-    console.log(div.innerHTML);
-    //socket.emit('echo data',  event.pageX+':'+event.pageY);
-    var xr = parseInt(event.pageX/2 /127);
-    var x = parseInt(event.pageX/2 % 127);
-    var yr = parseInt(event.pageY/2 /127);
-    var y = parseInt(event.pageY/2 % 127);
-    console.log(127*xr,x,127*yr,y,1);
-    //socket.emit('to arduino', String.fromCharCode(127*xr,x,127*yr,y,1));
-    //conn.send(String.fromCharCode(127*xr,x,127*yr,y,1));
-    sendData('arduino', String.fromCharCode(127*xr,x,127*yr,y,1))
-  }
+    div.innerHTML = 'Mouse here: '+ event.pageX+':'+event.pageY;
+    if (time_up(dt)) {
+        console.log(div.innerHTML);
+        sendData('arduino', {
+            motors: [event.pageX / 2, event.pageY / 2],
+            laser: laserOn,
+            time: new Date().getTime()
+        });
+    }
 }
 
 function sendData(label, data){
@@ -109,10 +119,10 @@ function onDocumentTouchStart( event ) {
 }
 
 window.onload = function() {
-  div = document.getElementById('hi');
-  con = document.getElementById('con');
-  con.addEventListener('mousemove', canvasMouseMove, false);
-  //con.addEventListener( 'touchstart', onDocumentTouchStart, false );
-  con.addEventListener( 'touchmove', onDocumentTouchStart, false );
+    div = document.getElementById('hi');
+    con = document.getElementById('con');
+    con.addEventListener('mousemove', canvasMouseMove, false);
+    //con.addEventListener( 'touchstart', onDocumentTouchStart, false );
+    con.addEventListener( 'touchmove', onDocumentTouchStart, false );
   
 };

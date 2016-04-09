@@ -8,7 +8,6 @@ var SerialPort, serialPort,
     dataLog;
 
 app.listen(8003);
-console.log('Got here?');
 
 function handler (req, res) {
   //console.log('dir is: ',__dirname);
@@ -23,7 +22,6 @@ function handler (req, res) {
     res.end(data);
   });
 }
-
 
 
 var write = function(err, results) {
@@ -85,7 +83,6 @@ We'll make a smart data handler called insid io.on(connection,...)
 var socketG;
 
 var handle ={
-    data:{},
     
     serial: function () {
         console.log('open');
@@ -100,22 +97,36 @@ var handle ={
             for (i in l) {
                 ch += String.fromCharCode(l[i]);
             }
-            //console.log(ch);
         });
     },
         
     socket: function (socket) {
-        socket.emit('news', {
-            hello: 'world'
-        });
-        socket.on('echo data', function(data) {
-            console.log(data);
-        });
+        socket.emit('news', { hello: 'world, from socket!' });
+        socket.on('echo data', function(data) { console.log(data);});
         socket.on('to arduino', function(data) {
-            //console.log('hehe:',data);
-            serialPort.write(data, write);
-            
+            serialPort.write(handle.data(data), write);
         });
+    },
+    
+    data: function(data) {
+        //return 0;//data;
+        // convert JSON data to series of bytes to be parsed by Arduino
+        var motors = handle.angleBytes(data.motors);
+        console.log('data: ', data.motors, motors);
+        // the last byte must be the laser
+        var res = String.fromCharCode.apply(this,motors.concat([data.laser])); // makes string of bytes
+        console.log('converted: ', res);
+        return res;
+    },
+    
+    angleBytes: function(ar){
+        // takes and array of angles 0-180. returns 2 bytes for each
+        var l = [];
+        for (i in ar){
+            l = l.concat([127 * parseInt(ar[i] / 127), parseInt(ar[i] % 127)]);
+        }
+        console.log('conv: ', l);
+        return l;
     }
     
 };
@@ -131,16 +142,14 @@ var make = {
             parser: serialport.parsers.readline("\n")
         });
         console.log('Connected to ', device.serialNumber);
-        
     }
 };
 
 //serialPort.on("open", handle.serial);
 io.on('connection', startAll);
 
-
 function startAll(socket){
-    socketG = socket;
+    socketG = socket; // make globally available (needed for handle.serial)
     // choose the arduino device from serialports
     var device;
     serialport.list(function(err, ports){
@@ -164,10 +173,4 @@ function startAll(socket){
         handle.socket(socket);
         
     };
-}
-
-
-
-function passSocket(socket,func){
-    return func
 }
