@@ -1,14 +1,70 @@
 <!DOCTYPE html>
 <head>
-  <meta name="description" content="Server side of p2p control">
-  <!--<script type ="text/javascript" src="/my.js"></script>-->
-  <script src="http://cdn.peerjs.com/0.3/peer.js"></script>
+    <meta name="description" content="Server side of p2p control">
+    <!--<script type ="text/javascript" src="/my.js"></script>-->
+    <script src="http://cdn.peerjs.com/0.3/peer.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+    <style>
+      .in{
+            display: inline-block;
+            margin-left: 2%;
+            margin-right: 2%;
+            margin-top:5px;
+            width:96%;
+        }
+        .in input{
+            border:none;
+            border-top-left-radius:3px;
+            border-bottom-left-radius:3px;
+            background-color: bisque;
+            width:66%;
+            padding:5px;
+        }
+        .in button{
+            background-color: red;
+            border: none;
+            border-top-right-radius:3px;
+            border-bottom-right-radius:3px;
+            
+            color: white;
+            padding: 5px;
+            width:30%;
+        }
+        #toolbox{
+            position: fixed;
+            top: 10%;
+            left: 3%;
+            /*margin-top: 13px;
+            margin-bottom: 13px;
+            padding-right: 10px;
+            */
+            padding-bottom: 10px;
+            border-radius: 8px;
+            background-color: rgba(255,140,0,.8);/*darkorange;*/
+            
+            width: 30%;
+            min-width: 260px;
+            max-width: 300px;
+            color: white;
+            font-family:Tahoma;
+            /*font-weight:500;*/
+        }
+    </style>
+  
 </head>
 <body>
-  <canvas id='con' width="360" height="360" style="background-color:#5577ff;"></canvas>
-  <div id='hi' width="300px" height="400px" onmousemove="this.innerHTML = event.pageX+':'+event.pageY">heeelo</div>
-  <script src="/socket.io/socket.io.js"></script>
-  <script>
+    <p>
+      1) Just make a more fancy handleData function for conn.on('data', handleData).
+    <br>2) Have it parse and handle a well organized JSON so that many different types data can be sent at the same time
+    <br>3) We can use the same channel for binary and chat data.</p>
+    
+    <canvas id='con' width="360" height="360" style="background-color:#5577ff;"></canvas>
+    <div id='hi' width="300px" height="400px" onmousemove="this.innerHTML = event.pageX+':'+event.pageY">heeelo</div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+  
+    
+    
     var peer = new Peer('kivi', {key: 'ihbxylb73u15rk9'});
     // You can pick your own id or omit the id if you want to get a random one from the server.
     
@@ -16,135 +72,196 @@
       console.log('My peer ID is: ' + id);
     });
     
-    var conn = peer.connect('nimi');
-    conn.on('open', function(){
-      conn.send('hi!');
-    });
+    // The other side is making the connection.
+    // Here we will accept it and while that connection is open, deal with it.
+    //var conn = peer.connect('nimi1');
+    // conn.on('open', function(){
+    //   conn.send('hello to you!!');
+    // });
+    var conn;
     
-    peer.on('connection', function(conn) {
-      if (time_up(1000)){
-        conn.on('data', function(data){
-          // Will print 'hi!'
-          console.log(data);
-          //to_arduino(data);
-          socket.emit('to arduino', data);
+    peer.on('connection', function(conn1) { // in here connection is open
+        // everything happens here
+        window.onload = function() {
+            div = document.getElementById('hi');
+            con = document.getElementById('con');
+            con.addEventListener('mousemove', fun);
+        };
+        
+        conn = conn1;
+        // conn.on('open', function(){
+        //     conn.send('hello to you!!');
+        // });
+        console.log(1, conn);
+        conn.send('works?'); // still closed here. must open it.
+        conn.open = true;
+        console.log(2, conn);
+        conn.send('got this? Really?'); // now it works.
+        conn.on('open', function(){
+            conn.send('hello to you!!');
+                
+            if (time_up(1000)) {
+                conn.on('data', function(data) {
+                    // Will print 'hi!'
+                    //console.log(data, conn);
+                    //to_arduino(data);
+                    //socket.emit('to arduino', data);
+                    handleData(data);
+                });
+            }
         });
-      }
-    });
+        //});
     
-    /*
-    // for now without video
-    var video;
-    video = document.querySelector("#player");
-    peer.on('call', function(call) {
-      // Answer the call, providing our mediaStream
-      //call.answer(mediaStream);
-      call.answer(null);
-      console.log("Video call!");
-      call.on('stream', function(stream) {
-        // `stream` is the MediaStream of the remote peer.
-        // Here you'd add it to an HTML video/canvas element.
-        //video = document.querySelector("#player");
-        console.log(video);
-        video.src = window.URL.createObjectURL(stream);
-      });
-    });
-    
-    
-    function success(stream){
-      var video = document.querySelector("#player");
-      video.src = window.URL.createObjectURL(stream);
-    }
-    
-    */
-    
-    
-    /*
-    var getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-    peer.on('call', function(call) {
-        call.on('stream', function(remoteStream) {
-          // Show stream in some video/canvas element.
+        /*
+        // for now without video
+        var video;
+        video = document.querySelector("#player");
+        peer.on('call', function(call) {
+          // Answer the call, providing our mediaStream
+          //call.answer(mediaStream);
+          call.answer(null);
+          console.log("Video call!");
+          call.on('stream', function(stream) {
+            // `stream` is the MediaStream of the remote peer.
+            // Here you'd add it to an HTML video/canvas element.
+            //video = document.querySelector("#player");
+            console.log(video);
+            video.src = window.URL.createObjectURL(stream);
+          });
+        });
+        
+        
+        function success(stream){
           var video = document.querySelector("#player");
-          video.src = window.URL.createObjectURL(remotestream);
-        });
-      
-      //getUserMedia(
-      
-      navigator.webkitGetUserMedia({video: true, audio: true}, function(stream) {
-        call.answer(stream); // Answer the call with an A/V stream.
-        call.on('stream', function(remoteStream) {
-          // Show stream in some video/canvas element.
-          var video = document.querySelector("#player");
-          video.src = window.URL.createObjectURL(remotestream);
-        });
-      }, function(err) {
-        console.log('Failed to get local stream' ,err);
-      });
-      
-    });
-    */
-    
-    //  setTimeout(function(){ 1;}, 2000);
-    function sleep(milliseconds) {
-      var start = new Date().getTime();
-      for (var i = 0; i < 1e7; i++) {
-        if ((new Date().getTime() - start) > milliseconds){
-          break;
+          video.src = window.URL.createObjectURL(stream);
         }
-      }
-    }
-    var t0 = new Date().getTime();
-    var t_flag = new Date().getTime();
-    var dt = 10;
-    
-    function time_up(dt) {
-      var flag = false;
-      t_flag = new Date().getTime();
-      if (t_flag - t0 > dt ) {
-        flag = true;
-        t0 = t_flag;
-      }
-      return flag;
-    }
-    
-    function to_arduino(data) {
-      var seq ='';
-      for (i in data) {
-        seq += String.CharCode(data[i]);
-      }
-    }
-    
-    function a(n){return String.fromCharCode(n);}
-    
-    console.log('run this?');
-    var socket = io('http://localhost:8003',{origins:'10.0.0.21'});
-    socket.on('news', function (data) {
-      console.log(data);
-      socket.emit('echo data', {'I got': data });
-    });
-    
-    var div, con;
-    
-    var fun = function(){
-      div.innerHTML = 'Mouse here: '+ event.pageX+':'+event.pageY;
-      if (time_up(dt)) {
-        console.log(div.innerHTML);
-        socket.emit('echo data',  event.pageX+':'+event.pageY);
-        var xr = parseInt(event.pageX/2 /127);
-        var x = parseInt(event.pageX/2 % 127);
-        var yr = parseInt(event.pageY/2 /127);
-        var y = parseInt(event.pageY/2 % 127);
-        console.log(127*xr,x,127*yr,y,1);
-        socket.emit('to arduino', String.fromCharCode(127*xr,x,127*yr,y,1));
-      }
-    };
+        
+        */
     
     
-    window.onload = function() {
-      div = document.getElementById('hi');
-      con = document.getElementById('con');
-      con.addEventListener('mousemove', fun);
-    };
+        /*
+        var getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+        peer.on('call', function(call) {
+            call.on('stream', function(remoteStream) {
+              // Show stream in some video/canvas element.
+              var video = document.querySelector("#player");
+              video.src = window.URL.createObjectURL(remotestream);
+            });
+          
+          //getUserMedia(
+          
+          navigator.webkitGetUserMedia({video: true, audio: true}, function(stream) {
+            call.answer(stream); // Answer the call with an A/V stream.
+            call.on('stream', function(remoteStream) {
+              // Show stream in some video/canvas element.
+              var video = document.querySelector("#player");
+              video.src = window.URL.createObjectURL(remotestream);
+            });
+          }, function(err) {
+            console.log('Failed to get local stream' ,err);
+          });
+          
+        });
+        */
+    
+        //  setTimeout(function(){ 1;}, 2000);
+        function sleep(milliseconds) {
+            var start = new Date().getTime();
+            for (var i = 0; i < 1e7; i++) {
+                if ((new Date().getTime() - start) > milliseconds) {
+                    break;
+                }
+            }
+        }
+        var t0 = new Date().getTime();
+        var t_flag = new Date().getTime();
+        var dt = 10;
+    
+        function time_up(dt) {
+            var flag = false;
+            t_flag = new Date().getTime();
+            if (t_flag - t0 > dt) {
+                flag = true;
+                t0 = t_flag;
+            }
+            return flag;
+        }
+    
+        function to_arduino(data) {
+            var seq = '';
+            for (i in data) {
+                seq += String.CharCode(data[i]);
+            }
+        }
+    
+        function a(n) {
+            return String.fromCharCode(n);
+        }
+    
+        console.log('run this?');
+        var socket = io('http://localhost:8003', {
+            origins: '10.0.0.21'
+        });
+        socket.on('news', function(data) {
+            console.log(data);
+            socket.emit('echo data', {
+                'I got': data
+            });
+        });
+    
+        socket.on('to peer', function(data) {
+            console.log('looping back to peer');
+            console.log(conn);
+            conn.send('Arduino said:'+data);
+        });
+    
+    
+        var div, con;
+    
+        var fun = function() {
+            div.innerHTML = 'Mouse here: ' + event.pageX + ':' + event.pageY;
+            if (time_up(dt)) {
+                console.log(div.innerHTML);
+                socket.emit('echo data', event.pageX + ':' + event.pageY);
+                var xr = parseInt(event.pageX / 2 / 127);
+                var x = parseInt(event.pageX / 2 % 127);
+                var yr = parseInt(event.pageY / 2 / 127);
+                var y = parseInt(event.pageY / 2 % 127);
+                console.log(127 * xr, x, 127 * yr, y, 1);
+                socket.emit('to arduino', String.fromCharCode(127 * xr, x, 127 * yr, y, 1));
+            }
+        };
+    
+    
+        
+    
+    
+        chat = new function() {
+            var self = this;
+            this.elem = document.createElement("DIV");
+            //this.elem.className = "in";
+            //this.elem.id = "toolbox";
+            document.body.appendChild(this.elem);
+            this.elem.innerHTML = "Chat Log: ";
+            this.incoming = function(s) {
+                self.elem.innerHTML = "Chat Log: " + s;
+            }
+    
+        };
+    
+        function handleData(data) {
+            //
+            if (data.arduino) {
+                chat.elem.innerHTML = "Arduino: " + parseInt(data.arduino);
+                socket.emit('to arduino', data.arduino);
+            }
+            if (data.chat) {
+                chat.incoming(data.chat);
+            }
+        }
+    }); //end of peer.on('connection', f)
+    
   </script>
+  
   
 </body>

@@ -1,12 +1,8 @@
 <!DOCTYPE html>
 <head>
+  <meta name="description" content="Server side of p2p control">
   <!--<script type ="text/javascript" src="/my.js"></script>-->
   <script src="http://cdn.peerjs.com/0.3/peer.js"></script>
-  <style>
-      body{
-          font-family:Tahoma;
-      }
-  </style>
 </head>
 <body>
     <h1>
@@ -14,10 +10,10 @@
   </h1>
   <h1>2) Have it parse and handle a well organized JSON so that many different types data can be sent at the same time </h1>
   <h1>3) We can use the same channel for binary and chat data.</h1>
+  
   <canvas id='con' width="360" height="360" style="background-color:#5577ff;"></canvas>
   <div id='hi' width="300px" height="400px" onmousemove="this.innerHTML = event.pageX+':'+event.pageY">heeelo</div>
   <script src="/socket.io/socket.io.js"></script>
-
   <script>
     var peer = new Peer('kivi', {key: 'ihbxylb73u15rk9'});
     // You can pick your own id or omit the id if you want to get a random one from the server.
@@ -32,13 +28,14 @@
     });
     
     peer.on('connection', function(conn) {
-      conn.on('data', function(data){
-        // Will print 'hi!'
-        console.log(data);
-        //to_arduino(data);
-        
-        socket.emit('to arduino', data);
-      });
+      if (time_up(1000)){
+        conn.on('data', function(data){
+          // Will print 'hi!'
+          console.log(data);
+          //to_arduino(data);
+          socket.emit('to arduino', data);
+        });
+      }
     });
     
     /*

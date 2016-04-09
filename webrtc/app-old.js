@@ -2,11 +2,6 @@ var app = require('http').createServer(handler)
 var io = require('socket.io')(app);
 var fs = require('fs');
 
-var SerialPort, serialPort,
-    serialport = require("serialport"),
-    baudrate = 57600,
-    dataLog;
-
 app.listen(8003);
 console.log('Got here?');
 
@@ -24,7 +19,13 @@ function handler (req, res) {
   });
 }
 
+var serialport = require("serialport");
+var SerialPort = serialport.SerialPort;
+var serialPort = new SerialPort("/dev/ttyACM0", {
+  baudrate: 57600, //9600,
+  parser: serialport.parsers.readline("\n")
 
+});
 
 var write = function(err, results) {
       if (err){console.log('Error: ' + err);}
@@ -82,18 +83,14 @@ We'll make a smart data handler called insid io.on(connection,...)
 
 /*New way*/
 
-var socketG;
+
 
 var handle ={
-    data:{},
-    
     serial: function () {
         console.log('open');
         serialPort.on('data', function(data) {
             console.log('log: ', data);
-            dataLog = data; //to make it available globally
-            // first send data to browser, then use send to peer with conn.send
-            socketG.emit('to peer', dataLog);
+    
             var l = data.split(', ');
             //socket.emit('news', l);
             var ch = [];
@@ -114,60 +111,13 @@ var handle ={
         socket.on('to arduino', function(data) {
             //console.log('hehe:',data);
             serialPort.write(data, write);
-            
         });
     }
     
 };
 
-var make = {
-    serial: function(device){
-        console.log('Using this device:');
-        console.log(device);
-        
-        SerialPort = serialport.SerialPort;
-        serialPort = new SerialPort(device.comName, {
-            baudrate: baudrate, //9600,
-            parser: serialport.parsers.readline("\n")
-        });
-        console.log('Connected to ', device.serialNumber);
-        
-    }
-};
 
 //serialPort.on("open", handle.serial);
-io.on('connection', startAll);
+io.on('connection', handle.socket);
 
 
-function startAll(socket){
-    socketG = socket;
-    // choose the arduino device from serialports
-    var device;
-    serialport.list(function(err, ports){
-        console.log('errors:', err);
-        for (i in ports){
-            //console.log(ports[i]);
-            try{
-                if (ports[i].manufacturer.includes('Arduino')) {
-                    device = ports[i];
-                    //console.log(ports[i]);
-                }
-            }catch(err){}
-        }
-        startSerial();
-    });
-    
-    function startSerial(){
-        make.serial(device);
-        serialPort.on("open", handle.serial);
-        //socket.emit('to peer', dataLog);
-        handle.socket(socket);
-        
-    };
-}
-
-
-
-function passSocket(socket,func){
-    return func
-}

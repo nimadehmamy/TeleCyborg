@@ -1,4 +1,4 @@
-var peer = new Peer('nimi',
+var peer = new Peer('nimi1',
   {key: 'ihbxylb73u15rk9'},
   options ={
     config: {
@@ -12,12 +12,22 @@ peer.on('open', function(id) {
 });
 
 var conn = peer.connect('kivi');
-conn.on('open', function(){
-  conn.send('hi!');
+// conn.on('open', function(){
+//   conn.send('hi!');
+// });
+
+conn.on('open', function() {
+  // Receive messages
+  conn.on('data', function(data) {
+    console.log('Received', data);
+  });
+
+  // Send messages
+  conn.send('Hello!');
 });
 
-peer.on('connection', function(conn) {
-  conn.on('data', function(data){
+peer.on('connection', function(conn1) {
+  conn1.on('data', function(data){
     // Will print 'hi!'
     console.log(data);
   });
@@ -78,8 +88,16 @@ function canvasMouseMove( event ){
     var y = parseInt(event.pageY/2 % 127);
     console.log(127*xr,x,127*yr,y,1);
     //socket.emit('to arduino', String.fromCharCode(127*xr,x,127*yr,y,1));
-    conn.send(String.fromCharCode(127*xr,x,127*yr,y,1));
+    //conn.send(String.fromCharCode(127*xr,x,127*yr,y,1));
+    sendData('arduino', String.fromCharCode(127*xr,x,127*yr,y,1))
   }
+}
+
+function sendData(label, data){
+    if (label == 'arduino'){
+        console.log('sending binary to arduino');
+        conn.send({'arduino': data});
+    }
 }
 
 function onDocumentTouchStart( event ) {
