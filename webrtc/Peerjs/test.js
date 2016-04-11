@@ -1,4 +1,4 @@
-var myid = 'nimi';
+var myid = 'nimi1';
 var peer = new Peer(myid,
   {key: 'ihbxylb73u15rk9'},
   options ={
@@ -12,7 +12,7 @@ peer.on('open', function(id) {
   console.log('My peer ID is: ' + id);
 });
 
-var otherPeer = 'kivi',
+var otherPeer = 'kivi1',
     conn = peer.connect(otherPeer);
 
 conn.on('open', function() {

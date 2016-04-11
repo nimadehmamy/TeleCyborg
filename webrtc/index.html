@@ -127,7 +127,7 @@
         }
     };
     
-    var peer = new Peer('kivi', {key: 'ihbxylb73u15rk9'});
+    var peer = new Peer('kivi1', {key: 'ihbxylb73u15rk9'});
     // You can pick your own id or omit the id if you want to get a random one from the server.
     
     peer.on('open', function(id) {
@@ -160,6 +160,8 @@
                     client.t0 = data.client.t0;
                     client.tp = client.t0; // initially
                     client.tlocal = new Date().getTime();
+                    socket.emit('client', client); // send to node.js
+                    console.log(client);
                 }
             }); // client = data could save malicious code...
             conn.send(peer.id+': You are connected.');
@@ -191,7 +193,9 @@
             //chat.elem.innerHTML = "Arduino: " + data.arduino;
             //socket.emit('to arduino', data.arduino);
             //console.log(data, 'client: ', client);
-            make.smooth(data);
+            //make.smooth(data);
+            socket.emit('to arduino', data);
+            
         }
         if (data.chat) {
             chat.incoming(data.chat);
