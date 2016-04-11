@@ -51,7 +51,7 @@ navigator.webkitGetUserMedia({video: true, audio: true}, function(mediaStream) {
 var getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 //getUserMedia(navigator,
 navigator.webkitGetUserMedia({video: true, audio: true}, function(stream) {
-  var call = peer.call('kivi', stream);
+  var call = peer.call(otherPeer, stream);
   call.on('stream', function(remoteStream) {
     // Show stream in some video/canvas element.
     var video = document.querySelector("#player");
@@ -60,12 +60,26 @@ navigator.webkitGetUserMedia({video: true, audio: true}, function(stream) {
 }, function(err) {
   console.log('Failed to get local stream' ,err);
 });
-
 */
+
+peer.on('call', function(call) {
+    // Answer the call, providing our mediaStream
+    call.answer();
+    console.log('answered call');
+    call.on('stream', function(stream) {
+        // `stream` is the MediaStream of the remote peer.
+        // Here you'd add it to an HTML video/canvas element.
+        var video = document.querySelector("#player");
+        console.log('in call', video);
+        video.src = window.URL.createObjectURL(stream);
+    });
+});
+
+////////////////
 
 var t0 = new Date().getTime(),
     t_flag = new Date().getTime(),
-    dt = 200,
+    dt = 20,
     laserOn = 1;
 
 function time_up(dt) {
@@ -135,3 +149,10 @@ window.onload = function() {
     con.addEventListener( 'touchmove', onDocumentTouchStart, false );
   
 };
+
+
+peer.on('call', function(call){
+      // Answer the call automatically (instead of prompting user) for demo purposes
+      call.answer(window.localStream);
+      //step3(call);
+    });

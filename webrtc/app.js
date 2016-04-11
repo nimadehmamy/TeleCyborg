@@ -172,7 +172,7 @@ var make = {
         client.tp = data.arduino.time;
         var tnow = new Date().getTime();
         console.log(tlocal - tnow, tnow);
-        var tout = tlocal - tnow + 2000; // to make sure signals are in time...
+        var tout = tlocal - tnow + 0; // to make sure signals are in time...
         make.tid = setTimeout(function() {
             //socket.emit('to arduino', data.arduino);
             func(data.arduino);

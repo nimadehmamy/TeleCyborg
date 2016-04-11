@@ -3,6 +3,7 @@
     <meta name="description" content="Server side of p2p control">
     <!--<script type ="text/javascript" src="/my.js"></script>-->
     <script src="http://cdn.peerjs.com/0.3/peer.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
     <style>
       .in{
@@ -60,6 +61,18 @@
     
     <canvas id='can' width="360" height="360" style="background-color:#5577ff;"></canvas>
     <div id='hi' width="300px" height="400px" onmousemove="this.innerHTML = event.pageX+':'+event.pageY">heeelo</div>
+    <video id="player" autoplay="true"></video>
+    <video id="live_video" autoplay controls></video>
+    <script type="text/javascript">
+    //   video = document.getElementById("live_video");
+    //   navigator.webkitGetUserMedia({video:true, audio:true},
+    //       function(stream) {
+    //         video.src = window.webkitURL.createObjectURL(stream);
+    //       },function(err) {
+    //           console.log('Failed to get local stream', err);
+    //       }
+    //   );
+    </script>
     <script src="/socket.io/socket.io.js"></script>
     <script>
     
@@ -182,8 +195,60 @@
             }
     
         };
-    
         
+        /*
+        // Call a peer, providing our mediaStream
+        
+        var getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+        peer.on('call', function(call) {
+            call.on('stream', function(remoteStream) {
+              // Show stream in some video/canvas element.
+              var video = document.querySelector("#player");
+              video.src = window.URL.createObjectURL(remotestream);
+            });
+          
+          //getUserMedia(
+          
+          navigator.webkitGetUserMedia({video: true, audio: true}, function(stream) {
+            call.answer(stream); // Answer the call with an A/V stream.
+            call.on('stream', function(remoteStream) {
+              // Show stream in some video/canvas element.
+              var video = document.querySelector("#player");
+              video.src = window.URL.createObjectURL(remotestream);
+            });
+          }, function(err) {
+            console.log('Failed to get local stream' ,err);
+          });
+          
+        });
+        */
+        // Call a peer, providing our mediaStream
+        var mediaStream;
+        
+        
+        // var getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+        // navigator.webkitGetUserMedia({video: true, audio: true}, function(stream) {
+        //     mediaStream = stream;
+        //     var video = $("#player");
+        //     video.src = window.URL.createObjectURL(stream);
+        // }
+        // , function(err) {console.log('Failed to get local stream' ,err);});
+        video = document.getElementById("live_video");
+        navigator.webkitGetUserMedia({video:true, audio:true},
+            function(stream) {
+                //mediaStream = stream;
+                //video.src = window.URL.createObjectURL(stream);
+                console.log('calling client', client.id);
+                var call = peer.call(client.id, stream);
+    
+                },function(err) {
+                  console.log('Failed to get local stream', err);
+                }
+            );
+        console.log('do you get here?');
+        //video.src = window.URL.createObjectURL(mediaStream);
+        //var call = peer.call(client.id, mediaStream);
+    
     }); //end of peer.on('connection', f)
     
     
