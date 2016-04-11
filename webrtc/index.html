@@ -93,7 +93,12 @@
     }
     
     var conn, div, can,
-        socket = io('http://localhost:8003', {origins: '10.0.0.21'});
+        socket = io('http://localhost:8003', {origins: '10.0.0.21'}),
+        arduinoBuffer = [], // buffers client data
+        arduinoCache = 30, // cache this many data from client and execute smoothly
+        arduinoTime = new Date().getTime(), // will be changed to client sent time for smoothening
+        client = {t0: null, tp : null, id: null};
+        
     socket.on('news', function(data) {
         console.log(data);
         socket.emit('echo data', {
@@ -126,7 +131,7 @@
     // You can pick your own id or omit the id if you want to get a random one from the server.
     
     peer.on('open', function(id) {
-      console.log('My peer ID is: ' + id);
+        console.log('My peer ID is: ' + id);
     });
     
     // The other side is making the connection.
@@ -135,6 +140,8 @@
     // conn.on('open', function(){
     //   conn.send('hello to you!!');
     // });
+    
+    
     
     peer.on('connection', function(conn1) { // in here connection is open
         // everything happens here
@@ -146,27 +153,20 @@
         conn.send('works?'); // still closed here. must open it.
         conn.open = true;
         console.log(2, conn);
-        conn.send('got this? Really?'); // now it works.
         conn.on('open', function(){
+            conn.on('data', function(data) {
+                if (data.client){
+                    client.id = data.client.id;
+                    client.t0 = data.client.t0;
+                    client.tp = client.t0; // initially
+                    client.tlocal = new Date().getTime();
+                }
+            }); // client = data could save malicious code...
             conn.send(peer.id+': You are connected.');
             if (time_up(1000)) {
                 conn.on('data', function(data) {handleData(socket, data);}); //handled by socket
             }
         });
-        
-        function to_arduino(data) {
-            var seq = '';
-            for (i in data) {
-                seq += String.fromCharCode(data[i]);
-            }
-            return seq;
-        }
-    
-        function a(n) {
-            return String.fromCharCode(n);
-        }
-    
-        console.log('run this?');
     
         chat = new function() {
             var self = this;
@@ -188,14 +188,68 @@
     function handleData(socket,data) {
         //
         if (data.arduino) {
-            chat.elem.innerHTML = "Arduino: " + data.arduino;
-            socket.emit('to arduino', data.arduino);
+            //chat.elem.innerHTML = "Arduino: " + data.arduino;
+            //socket.emit('to arduino', data.arduino);
+            //console.log(data, 'client: ', client);
+            make.smooth(data);
         }
         if (data.chat) {
             chat.incoming(data.chat);
         }
     };
     
+    var make ={
+        /* Timing buffered data
+    We need to execute the buffered data with timing similar to the client.
+    We can use setTimeout(func, dt), but everytime we execute, we need to
+    set the next timeout.
+    */
+    
+        dataBuffer: function(data){
+            // used to buffer all data received from client
+            // to smoothen movements and mimic client movements
+            arduinoBuffer = arduinoBuffer.concat(data);
+            if (arduinoBuffer.length > arduinoCache){arduinoBuffer.shift()};
+        },
+        tid : null, // to keep id of latest added timeout
+        smooth: function(data){
+            // only if the same time gap has elapsed as in the buffered data, execute movements
+            //make.dataBuffer(data);
+            // set timeout based on dt with last event
+            /*t relative to initial t of robot
+            the same dt as data.arduino.time - client.t0
+            but relative to local time here
+            if data @ t0+1000, locally it chould happen at t-local+ 1000
+            thus,
+            1) find dt = data.arduino.time - client.t0;
+            2) add to local t0 (i.e. client.tlocal): tlocal = dt + client.tlocal
+            3) finally, set a timeout from now to tlocal:
+            setTimeout(fun(), tlocal - new Date
+            */
+            var dt = data.arduino.time - client.t0;
+            var tlocal = dt + client.tlocal; // local time of event
+            console.log(dt, client.t0, data.arduino.time , client.tlocal, tlocal);
+            //var dt = data.arduino.time - client.tp; // + 10000;
+            client.tp = data.arduino.time;
+            var tnow = new Date().getTime();
+            console.log(tlocal- tnow, tnow);
+            
+            var tout = tlocal - tnow + 2000; // to make sure signals are in time...
+            make.tid = setTimeout(function(){
+                socket.emit('to arduino', data.arduino);
+            }, tout);
+            console.log(make.tid, 'dt = ', tout);
+            
+            /*dt should just increase as time increases
+             since the data is from the past, we need to have
+             a ref time that would translate the times of client
+             to local time. If client sends a t0 when they connect
+             we could find dt of client and us and see how that changes.
+             The key is, relative to client t0, the robot t should evolve
+             */
+            
+        }
+    }
     
     
     /*

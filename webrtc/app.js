@@ -80,8 +80,8 @@ We'll make a smart data handler called insid io.on(connection,...)
 
 /*New way*/
 
-var socketG;
-
+var socketG; // global socket
+    
 var handle ={
     
     serial: function () {
@@ -115,7 +115,7 @@ var handle ={
         console.log('data: ', data.motors, motors);
         // the last byte must be the laser
         var res = String.fromCharCode.apply(this,motors.concat([data.laser])); // makes string of bytes
-        console.log('converted: ', res);
+        //console.log('converted: ', res);
         return res;
     },
     
@@ -142,7 +142,9 @@ var make = {
             parser: serialport.parsers.readline("\n")
         });
         console.log('Connected to ', device.serialNumber);
-    }
+    },
+    
+    
 };
 
 //serialPort.on("open", handle.serial);

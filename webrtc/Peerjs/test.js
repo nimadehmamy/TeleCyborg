@@ -1,4 +1,5 @@
-var peer = new Peer('nimi2',
+var myid = 'nimi';
+var peer = new Peer(myid,
   {key: 'ihbxylb73u15rk9'},
   options ={
     config: {
@@ -21,7 +22,11 @@ conn.on('open', function() {
     });
     
     // Send messages
-    conn.send('Hello!');
+    conn.send({client: {
+        id: myid,
+        t0: new Date().getTime()
+    }
+    });
 });
 
 peer.on('connection', function(conn1) {
@@ -67,8 +72,10 @@ function time_up(dt) {
     var flag = false;
     t_flag = new Date().getTime();
     if (t_flag - t0 > dt ) {
+        console.log(t_flag-t0);
         flag = true;
         t0 = t_flag;
+        
     }
     return flag;
 }
@@ -95,11 +102,13 @@ function canvasMouseMove( event ){
     div.innerHTML = 'Mouse here: '+ event.pageX+':'+event.pageY;
     if (time_up(dt)) {
         console.log(div.innerHTML);
-        sendData('arduino', {
+        var data = {
             motors: [event.pageX / 2, event.pageY / 2],
             laser: laserOn,
             time: new Date().getTime()
-        });
+        };
+        //console.log(data);
+        sendData('arduino', data);
     }
 }
 
