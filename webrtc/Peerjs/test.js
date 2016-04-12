@@ -1,4 +1,4 @@
-var myid = 'nimi1';
+var myid = 'nimi2';
 var peer = new Peer(myid,
   {key: 'ihbxylb73u15rk9'},
   options ={
@@ -13,7 +13,7 @@ peer.on('open', function(id) {
 });
 
 var otherPeer = 'kivi1',
-    conn = peer.connect(otherPeer);
+    conn = peer.connect(otherPeer);//, {reliable: true});
 
 conn.on('open', function() {
     // Receive messages
@@ -24,7 +24,7 @@ conn.on('open', function() {
     // Send messages
     conn.send({client: {
         id: myid,
-        t0: new Date().getTime()
+        t0: window.performance.now()// new Date().getTime()
     }
     });
 });
@@ -77,14 +77,14 @@ peer.on('call', function(call) {
 
 ////////////////
 
-var t0 = new Date().getTime(),
-    t_flag = new Date().getTime(),
+var t0 = window.performance.now(),// new Date().getTime(),
+    t_flag =  window.performance.now(),//new Date().getTime(),
     dt = 20,
     laserOn = 1;
 
 function time_up(dt) {
     var flag = false;
-    t_flag = new Date().getTime();
+    t_flag =  window.performance.now();//new Date().getTime();
     if (t_flag - t0 > dt ) {
         console.log(t_flag-t0);
         flag = true;
@@ -119,7 +119,7 @@ function canvasMouseMove( event ){
         var data = {
             motors: [event.pageX / 2, event.pageY / 2],
             laser: laserOn,
-            time: new Date().getTime()
+            time:  window.performance.now(),//new Date().getTime()
         };
         //console.log(data);
         sendData('arduino', data);

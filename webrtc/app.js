@@ -1,6 +1,7 @@
 var app = require('http').createServer(handler)
 var io = require('socket.io')(app);
 var fs = require('fs');
+var now = require("performance-now");
 
 var SerialPort, serialPort,
     serialport = require("serialport"),
@@ -81,7 +82,7 @@ We'll make a smart data handler called insid io.on(connection,...)
 /*New way*/
 
 var socketG, // global socket
-    client;
+    client, nodeTlocal;
     
 var handle ={
     
@@ -109,10 +110,14 @@ var handle ={
         // });
         socket.on('to arduino', function(data) {
             make.smooth(function(dat){
-                serialPort.write(handle.data(dat), write);
+                var da = handle.data(dat);
+                if (da.length >1){
+                    serialPort.write(da, write);
+                }else console.log('!!!!!! data corrupted!!!!!');
             }, data);
         });
-        socket.on('client', function(data){client = data;});
+        socket.on('client', function(data){client = data; nodeTlocal = parseInt(now());//new Date().getTime();
+        });
     },
     
     data: function(data) {
@@ -165,19 +170,19 @@ var make = {
         3) finally, set a timeout from now to tlocal:
         setTimeout(fun(), tlocal - new Date
         */
-        var dt = data.arduino.time - client.t0;
-        var tlocal = dt + client.tlocal; // local time of event
-        console.log(dt, client.t0, data.arduino.time, client.tlocal, tlocal);
+        var dt = parseInt(data.arduino.time - client.t0);
+        var tlocal = dt + nodeTlocal;//client.tlocal; // local time of event
+        console.log(dt, client.t0 - client.tlocal, client.t0 - nodeTlocal, data.arduino.time, tlocal);
         //var dt = data.arduino.time - client.tp; // + 10000;
         client.tp = data.arduino.time;
-        var tnow = new Date().getTime();
-        console.log(tlocal - tnow, tnow);
-        var tout = tlocal - tnow + 0; // to make sure signals are in time...
+        var tnow = parseInt(now());//new Date().getTime();
+        console.log(tlocal - tnow, dt, tnow - nodeTlocal , dt - (tnow- nodeTlocal) );
+        var tout = Math.max(tlocal - tnow+ 2000, 20 ); // to make sure signals are in time...
         make.tid = setTimeout(function() {
             //socket.emit('to arduino', data.arduino);
             func(data.arduino);
         }, tout);
-        console.log(make.tid, 'dt = ', tout);
+        console.log('dt = ', tout);
     }
     
 };

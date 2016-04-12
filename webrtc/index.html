@@ -233,19 +233,23 @@
         //     video.src = window.URL.createObjectURL(stream);
         // }
         // , function(err) {console.log('Failed to get local stream' ,err);});
-        video = document.getElementById("live_video");
-        navigator.webkitGetUserMedia({video:true, audio:true},
-            function(stream) {
-                //mediaStream = stream;
-                //video.src = window.URL.createObjectURL(stream);
-                console.log('calling client', client.id);
-                var call = peer.call(client.id, stream);
+        
+        
+        
+        // video = document.getElementById("live_video");
+        // navigator.webkitGetUserMedia({video:true, audio:true},
+        //     function(stream) {
+        //         //mediaStream = stream;
+        //         //video.src = window.URL.createObjectURL(stream);
+        //         console.log('calling client', client.id);
+        //         var call = peer.call(client.id, stream);
     
-                },function(err) {
-                  console.log('Failed to get local stream', err);
-                }
-            );
-        console.log('do you get here?');
+        //         },function(err) {
+        //           console.log('Failed to get local stream', err);
+        //         }
+        //     );
+        // console.log('do you get here?');
+        
         //video.src = window.URL.createObjectURL(mediaStream);
         //var call = peer.call(client.id, mediaStream);
     
